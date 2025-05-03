@@ -3,30 +3,34 @@ import 'package:flutter/material.dart';
 /// Theme extension for custom text styles
 class AppTypographyThemeExtension
     extends ThemeExtension<AppTypographyThemeExtension> {
-  final TextStyle displayLarge;
   final TextStyle titleLarge;
-  final TextStyle bodyLarge;
-  final TextStyle labelLarge;
+  final TextStyle titleLargeBold;
+  final TextStyle bodyMedium;
+  final TextStyle labelLargeBold;
+  final TextStyle labelSmall; 
 
   const AppTypographyThemeExtension({
-    required this.displayLarge,
     required this.titleLarge,
-    required this.bodyLarge,
-    required this.labelLarge,
+    required this.titleLargeBold,
+    required this.bodyMedium,
+    required this.labelLargeBold,
+    required this.labelSmall,
   });
 
   @override
   ThemeExtension<AppTypographyThemeExtension> copyWith({
-    TextStyle? displayLarge,
     TextStyle? titleLarge,
-    TextStyle? bodyLarge,
-    TextStyle? labelLarge,
+    TextStyle? titleLargeBold,
+    TextStyle? bodyMedium,
+    TextStyle? labelLargeBold,
+    TextStyle? labelSmall,
   }) {
     return AppTypographyThemeExtension(
-      displayLarge: displayLarge ?? this.displayLarge,
       titleLarge: titleLarge ?? this.titleLarge,
-      bodyLarge: bodyLarge ?? this.bodyLarge,
-      labelLarge: labelLarge ?? this.labelLarge,
+      titleLargeBold: titleLargeBold ?? this.titleLargeBold,
+      bodyMedium: bodyMedium ?? this.bodyMedium,
+      labelLargeBold: labelLargeBold ?? this.labelLargeBold,
+      labelSmall: labelSmall ?? this.labelSmall,
     );
   }
 
@@ -37,10 +41,11 @@ class AppTypographyThemeExtension
   ) {
     if (other is! AppTypographyThemeExtension) return this;
     return AppTypographyThemeExtension(
-      displayLarge: displayLarge.lerp(other.displayLarge, t),
       titleLarge: titleLarge.lerp(other.titleLarge, t),
-      bodyLarge: bodyLarge.lerp(other.bodyLarge, t),
-      labelLarge: labelLarge.lerp(other.labelLarge, t),
+      titleLargeBold: titleLargeBold.lerp(other.titleLargeBold, t),
+      bodyMedium: bodyMedium.lerp(other.bodyMedium, t),
+      labelLargeBold: labelLargeBold.lerp(other.labelLargeBold, t),
+      labelSmall: labelSmall.lerp(other.labelSmall, t),
     );
   }
 }
