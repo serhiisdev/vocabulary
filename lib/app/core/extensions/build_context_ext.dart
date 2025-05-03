@@ -6,4 +6,6 @@ extension BuildContextExt on BuildContext {
   GoRouter get router => GoRouter.of(this);
   ThemeData get theme => Theme.of(this);
   AppLocalizations get localizations => AppLocalizations.of(this)!;
+
+  Size get screenSize => MediaQuery.sizeOf(this);
 }
