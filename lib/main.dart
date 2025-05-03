@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:vocabulary/app/main_app.dart';
+import 'package:vocabulary/app/bootstrap.dart';
 
 void main() {
-  runApp(const MainApp());
+  bootstrap();
 }
