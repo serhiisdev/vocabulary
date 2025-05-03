@@ -7,8 +7,10 @@ plugins {
 
 android {
     namespace = "com.app.vocabulary"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 35
+    // NDK version that is used by "flutter_native_splash" plugin.
+    // It's higher then default NDK version used by Flutter.
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -24,8 +26,8 @@ android {
         applicationId = "com.app.vocabulary"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk = 21
+        targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
