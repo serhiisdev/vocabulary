@@ -1,4 +1,16 @@
 {
   "@@locale": "en",
-  "helloWorld": "Hello World!"
+  "expandYorVocabularyIn1MinuteADay": "Expand your Vocabulary in 1 minute a day",
+  "learnNewWordsSubtitle": "Learn 10,000+ new words with a new daily habit that takes just 1 minute",
+  "xMillion": "{x} million",
+  "@xDownload": {
+    "placeholders": {
+      "x": {
+        "type": "int"
+      }
+    }
+  },
+  "wordsLearned": "Words learned",
+  "downloads": "Downloads",
+  "getStarted": "Get started"
 }

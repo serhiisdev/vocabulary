@@ -8,12 +8,18 @@ abstract class AppThemeExtensions {
     white: AppColors.white,
     black: AppColors.black,
     text: AppColors.text,
+    background: AppColors.background,
+    buttonBackground: AppColors.buttonBackground,
+    buttonForeground: AppColors.buttonForeground,
+    shadowColor: AppColors.black,
+    starColor: AppColors.starColor,
   );
   static AppTypographyThemeExtension buildAppTypography() =>
       AppTypographyThemeExtension(
-        displayLarge: AppTypography.displayLarge,
         titleLarge: AppTypography.titleLarge,
-        bodyLarge: AppTypography.bodyLarge,
-        labelLarge: AppTypography.labelLarge,
+        titleLargeBold: AppTypography.titleLargeBold,
+        bodyMedium: AppTypography.bodyMedium,
+        labelLargeBold: AppTypography.labelLargeBold,
+        labelSmall: AppTypography.labelSmall,
       );
 }
