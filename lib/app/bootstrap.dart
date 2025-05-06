@@ -4,10 +4,10 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:vocabulary/app/di/get_it.dart';
 import 'package:vocabulary/app/main_app.dart';
 
-void bootstrap() {
+Future<void> bootstrap() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-  configureDependencies();
+  await configureDependencies();
   runApp(const MainApp());
 }

@@ -5,6 +5,7 @@ class AppTypographyThemeExtension
     extends ThemeExtension<AppTypographyThemeExtension> {
   final TextStyle titleLarge;
   final TextStyle titleLargeBold;
+  final TextStyle bodyLargeBold;
   final TextStyle bodyMedium;
   final TextStyle labelLargeBold;
   final TextStyle labelSmall; 
@@ -12,6 +13,7 @@ class AppTypographyThemeExtension
   const AppTypographyThemeExtension({
     required this.titleLarge,
     required this.titleLargeBold,
+    required this.bodyLargeBold,
     required this.bodyMedium,
     required this.labelLargeBold,
     required this.labelSmall,
@@ -21,6 +23,7 @@ class AppTypographyThemeExtension
   ThemeExtension<AppTypographyThemeExtension> copyWith({
     TextStyle? titleLarge,
     TextStyle? titleLargeBold,
+    TextStyle? bodyLargeBold,
     TextStyle? bodyMedium,
     TextStyle? labelLargeBold,
     TextStyle? labelSmall,
@@ -28,6 +31,7 @@ class AppTypographyThemeExtension
     return AppTypographyThemeExtension(
       titleLarge: titleLarge ?? this.titleLarge,
       titleLargeBold: titleLargeBold ?? this.titleLargeBold,
+      bodyLargeBold: bodyLargeBold ?? this.bodyLargeBold,
       bodyMedium: bodyMedium ?? this.bodyMedium,
       labelLargeBold: labelLargeBold ?? this.labelLargeBold,
       labelSmall: labelSmall ?? this.labelSmall,
@@ -43,6 +47,7 @@ class AppTypographyThemeExtension
     return AppTypographyThemeExtension(
       titleLarge: titleLarge.lerp(other.titleLarge, t),
       titleLargeBold: titleLargeBold.lerp(other.titleLargeBold, t),
+      bodyLargeBold: bodyLargeBold.lerp(other.bodyLargeBold, t),
       bodyMedium: bodyMedium.lerp(other.bodyMedium, t),
       labelLargeBold: labelLargeBold.lerp(other.labelLargeBold, t),
       labelSmall: labelSmall.lerp(other.labelSmall, t),
