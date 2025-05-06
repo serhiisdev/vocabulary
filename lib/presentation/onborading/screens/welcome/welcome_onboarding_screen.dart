@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vocabulary/app/core/extensions/build_context_ext.dart';
 import 'package:vocabulary/app/core/extensions/theme_data_ext.dart';
 import 'package:vocabulary/app/gen/assets.gen.dart';
+import 'package:vocabulary/app/router/screen.dart';
 import 'package:vocabulary/presentation/core/buttons/buttons.dart';
 import 'package:vocabulary/presentation/core/scaffold/scaffold_with_pinned_image.dart';
 import 'package:vocabulary/presentation/core/starts_widget.dart';
+import 'package:vocabulary/presentation/onborading/bloc/onboarding_bloc.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+class WelcomeOnboardingScreen extends StatelessWidget {
+  const WelcomeOnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<OnboardingBloc>();
     const buttonHeight = 48.0;
     const buttonVerticalPadding = 24.0;
     const bodyBottomPadding = buttonHeight + (buttonVerticalPadding * 2) + 16;
@@ -20,7 +25,9 @@ class WelcomeScreen extends StatelessWidget {
       height: buttonHeight,
       child: Buttons.elevatedButtonWithShadow(
         context,
-        onPressed: () {},
+        onPressed: () {
+          context.pushNamed(Screen.onboardingSteps);
+        },
         child: Text(
           context.localizations.getStarted,
           style: context.theme.appTypography.labelLargeBold.copyWith(
@@ -118,7 +125,8 @@ class _Bottom extends StatelessWidget {
               title: Text(
                 '4.8',
                 textAlign: TextAlign.center,
-                style: context.theme.appTypography.bodyMedium.copyWith(
+                style: context.theme.appTypography.bodyLargeBold.copyWith(
+                  fontSize: 16,
                   color: context.theme.appColors.text,
                 ),
               ),
@@ -135,7 +143,7 @@ class _Bottom extends StatelessWidget {
             title: Text(
               context.localizations.xMillion(10),
               textAlign: TextAlign.center,
-              style: context.theme.appTypography.bodyMedium.copyWith(
+              style: context.theme.appTypography.labelLargeBold.copyWith(
                 color: context.theme.appColors.text,
               ),
             ),

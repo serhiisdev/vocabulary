@@ -77,7 +77,7 @@ String toString() {
 /// @nodoc
 mixin _$SplashState {
 
- BlocStatus get status;
+ BlocStatus get status; bool get isOnboardingCompleted;
 /// Create a copy of SplashState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -88,16 +88,16 @@ $SplashStateCopyWith<SplashState> get copyWith => _$SplashStateCopyWithImpl<Spla
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SplashState&&(identical(other.status, status) || other.status == status));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SplashState&&(identical(other.status, status) || other.status == status)&&(identical(other.isOnboardingCompleted, isOnboardingCompleted) || other.isOnboardingCompleted == isOnboardingCompleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status);
+int get hashCode => Object.hash(runtimeType,status,isOnboardingCompleted);
 
 @override
 String toString() {
-  return 'SplashState(status: $status)';
+  return 'SplashState(status: $status, isOnboardingCompleted: $isOnboardingCompleted)';
 }
 
 
@@ -108,7 +108,7 @@ abstract mixin class $SplashStateCopyWith<$Res>  {
   factory $SplashStateCopyWith(SplashState value, $Res Function(SplashState) _then) = _$SplashStateCopyWithImpl;
 @useResult
 $Res call({
- BlocStatus status
+ BlocStatus status, bool isOnboardingCompleted
 });
 
 
@@ -125,10 +125,11 @@ class _$SplashStateCopyWithImpl<$Res>
 
 /// Create a copy of SplashState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? isOnboardingCompleted = null,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as BlocStatus,
+as BlocStatus,isOnboardingCompleted: null == isOnboardingCompleted ? _self.isOnboardingCompleted : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 /// Create a copy of SplashState
@@ -148,10 +149,11 @@ $BlocStatusCopyWith<dynamic, $Res> get status {
 
 
 class _SplashState implements SplashState {
-  const _SplashState({this.status = const BlocStatus.initial()});
+  const _SplashState({this.status = const BlocStatus.initial(), this.isOnboardingCompleted = false});
   
 
 @override@JsonKey() final  BlocStatus status;
+@override@JsonKey() final  bool isOnboardingCompleted;
 
 /// Create a copy of SplashState
 /// with the given fields replaced by the non-null parameter values.
@@ -163,16 +165,16 @@ _$SplashStateCopyWith<_SplashState> get copyWith => __$SplashStateCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SplashState&&(identical(other.status, status) || other.status == status));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SplashState&&(identical(other.status, status) || other.status == status)&&(identical(other.isOnboardingCompleted, isOnboardingCompleted) || other.isOnboardingCompleted == isOnboardingCompleted));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status);
+int get hashCode => Object.hash(runtimeType,status,isOnboardingCompleted);
 
 @override
 String toString() {
-  return 'SplashState(status: $status)';
+  return 'SplashState(status: $status, isOnboardingCompleted: $isOnboardingCompleted)';
 }
 
 
@@ -183,7 +185,7 @@ abstract mixin class _$SplashStateCopyWith<$Res> implements $SplashStateCopyWith
   factory _$SplashStateCopyWith(_SplashState value, $Res Function(_SplashState) _then) = __$SplashStateCopyWithImpl;
 @override @useResult
 $Res call({
- BlocStatus status
+ BlocStatus status, bool isOnboardingCompleted
 });
 
 
@@ -200,10 +202,11 @@ class __$SplashStateCopyWithImpl<$Res>
 
 /// Create a copy of SplashState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? isOnboardingCompleted = null,}) {
   return _then(_SplashState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as BlocStatus,
+as BlocStatus,isOnboardingCompleted: null == isOnboardingCompleted ? _self.isOnboardingCompleted : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

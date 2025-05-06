@@ -11,6 +11,11 @@ abstract class AppTypography {
     fontSize: 26,
     fontWeight: FontWeight.bold,
   ));
+  static final bodyLargeBold = GoogleFonts.poppins(
+    textStyle:TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+  ));
   static final bodyMedium = GoogleFonts.poppins(
     textStyle:TextStyle(
     fontSize: 14,
