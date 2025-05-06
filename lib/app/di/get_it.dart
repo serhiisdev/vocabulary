@@ -4,7 +4,5 @@ import 'package:vocabulary/app/di/get_it.config.dart';
 
 final getIt = GetIt.instance;
 
-@InjectableInit(
-  initializerName: 'init',
-)
-void configureDependencies() => getIt.init();
+@InjectableInit(initializerName: 'init')
+Future<void> configureDependencies() async => getIt.init();

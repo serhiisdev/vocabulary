@@ -18,6 +18,7 @@ abstract class AppThemeExtensions {
       AppTypographyThemeExtension(
         titleLarge: AppTypography.titleLarge,
         titleLargeBold: AppTypography.titleLargeBold,
+        bodyLargeBold: AppTypography.bodyLargeBold,
         bodyMedium: AppTypography.bodyMedium,
         labelLargeBold: AppTypography.labelLargeBold,
         labelSmall: AppTypography.labelSmall,

@@ -32,7 +32,7 @@ class ScaffoldWithPinnedImage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: LayoutBuilder(
         builder: (context, constraints) {
-          // Use [SingleChildScrollView] to ensure that use is able to scroll content,
+          // Use [SingleChildScrollView] to ensure that user is able to scroll content,
           // if content is bigger than screen height, for example when system font size is increased.
           return SingleChildScrollView(
                 child: ConstrainedBox(
