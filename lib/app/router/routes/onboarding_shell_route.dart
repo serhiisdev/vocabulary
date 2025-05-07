@@ -17,7 +17,7 @@ abstract class OnboardingShellRoute {
       navigatorKey: onboardingNavigatorKey,
       builder: (context, state, child) {
         return BlocProvider(
-          create: (_) => getIt<OnboardingBloc>(),
+          create: (_) => getIt<OnboardingBloc>()..add(const OnboardingEvent.started()),
           child:  child,
         );
       },

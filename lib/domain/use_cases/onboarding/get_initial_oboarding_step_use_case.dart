@@ -13,6 +13,7 @@ class GetInitialOnboardingStepUseCase {
     final nextStep = allSteps.firstWhereOrNull(
       (step) => !completedSteps.contains(step),
     );
+    print('nextStep: $nextStep allSteps: $allSteps completedSteps: $completedSteps');
     return nextStep ?? allSteps.first;
   }
 }

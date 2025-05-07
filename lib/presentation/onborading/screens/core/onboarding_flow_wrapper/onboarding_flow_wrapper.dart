@@ -53,6 +53,7 @@ class OnboardingFlowWrapper extends StatelessWidget {
                   a.currentStepIndex != b.currentStepIndex ||
                   a.isOnboardingCompleted != b.isOnboardingCompleted,
           listener: (context, state) {
+            print('onboarding listener step: ${state.currentStepIndex}');
             _handleRedirect(
               context,
               isOnboardingCompleted: state.isOnboardingCompleted,
