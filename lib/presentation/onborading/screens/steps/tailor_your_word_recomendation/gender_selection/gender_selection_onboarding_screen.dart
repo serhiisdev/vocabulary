@@ -1,54 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vocabulary/presentation/core/buttons/buttons.dart';
 import 'package:vocabulary/presentation/onborading/bloc/onboarding_bloc.dart';
+import 'package:vocabulary/presentation/onborading/data/onboarding_enums.dart';
+import 'package:vocabulary/presentation/onborading/data/onboarding_step_ui.dart';
+import 'package:vocabulary/presentation/onborading/widgets/onboarding_qa_options_scaffold.dart';
 
-class ScaffoldWithNextButton extends StatelessWidget {
-  final Widget body;
 
-  const ScaffoldWithNextButton({
-    super.key,
-    required this.body,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        
-      ),
-      body: Column(
-        children: [
-          Expanded(child: body),
-          SizedBox(
-            width: double.infinity,
-            height: 48,
-            child: Buttons.elevatedButtonWithShadow(
-              context,
-              onPressed: () {
-                context.read<OnboardingBloc>().add(const OnboardingEvent.goToNextStep());
-              },
-              child: Text('Next'),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 class GenderSelectionOnboardingScreen extends StatelessWidget {
   const GenderSelectionOnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldWithNextButton(
-      body: Column(
-        children: [
-          Text('Gender selection'),
-         
-        ],
-      ),
+     final bloc = context.watch<OnboardingBloc>();
+    return OnboardingQaOptionsScaffold(
+      onSelected: (item) {
+        bloc.add(OnboardingEvent.genderSelected(item));
+        bloc.add(const OnboardingEvent.markStepAsCompleted(OnboardingStepUi.genderSelection));
+      },
+      onSelectedAnimationCompleted: () {
+        bloc.add(const OnboardingEvent.goToNextStep());
+      },
+      onSkip: (_) {
+        bloc.add(OnboardingEvent.skip());
+      },
+      selectedItem: bloc.state.gender,
+      items: OnboardingGender.values,
     );
   }
 }

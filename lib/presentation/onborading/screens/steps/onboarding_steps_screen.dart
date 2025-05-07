@@ -1,36 +1,23 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vocabulary/app/di/get_it.dart';
 import 'package:vocabulary/presentation/onborading/bloc/onboarding_bloc.dart';
 import 'package:vocabulary/presentation/onborading/config/onboarding_screen_resolver.dart';
 import 'package:vocabulary/presentation/onborading/screens/core/onboarding_flow_wrapper/onboarding_flow_wrapper.dart';
 
-class OnboardingStepsScreen extends StatelessWidget {
+class OnboardingStepsScreen extends StatefulWidget {
   const OnboardingStepsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-   return BlocProvider(
-      create: (_) => getIt<OnboardingBloc>(),
-      child: const _OnboardingStepsScreenView(),
-    );
-  }
+  State<OnboardingStepsScreen> createState() => _OnboardingStepsScreenState();
 }
 
-class _OnboardingStepsScreenView extends StatefulWidget {
-  const _OnboardingStepsScreenView();
-
-  @override
-  State<_OnboardingStepsScreenView> createState() => _OnboardingStepsScreenViewState();
-}
-
-class _OnboardingStepsScreenViewState extends State<_OnboardingStepsScreenView> {
+class _OnboardingStepsScreenState extends State<OnboardingStepsScreen> {
   late final PageController _pageController;
-  
+
   void _onPageChanged({required int index, required OnboardingBloc bloc}) {
     bloc.add(OnboardingEvent.stepChanged(index));
   }
-  
+
   @override
   void initState() {
     super.initState();
@@ -50,7 +37,7 @@ class _OnboardingStepsScreenViewState extends State<_OnboardingStepsScreenView> 
     final bloc = context.watch<OnboardingBloc>();
     final state = bloc.state;
     final steps = state.steps;
-  
+
     return PageView.builder(
       physics: const NeverScrollableScrollPhysics(),
       controller: _pageController,
