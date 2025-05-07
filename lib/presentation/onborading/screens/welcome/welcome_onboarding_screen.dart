@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vocabulary/app/core/extensions/build_context_ext.dart';
 import 'package:vocabulary/app/core/extensions/theme_data_ext.dart';
@@ -7,15 +6,13 @@ import 'package:vocabulary/app/gen/assets.gen.dart';
 import 'package:vocabulary/app/router/screen.dart';
 import 'package:vocabulary/presentation/core/buttons/buttons.dart';
 import 'package:vocabulary/presentation/core/scaffold/scaffold_with_pinned_image.dart';
-import 'package:vocabulary/presentation/core/starts_widget.dart';
-import 'package:vocabulary/presentation/onborading/bloc/onboarding_bloc.dart';
+import 'package:vocabulary/presentation/core/stars_widget.dart';
 
 class WelcomeOnboardingScreen extends StatelessWidget {
   const WelcomeOnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<OnboardingBloc>();
     const buttonHeight = 48.0;
     const buttonVerticalPadding = 24.0;
     const bodyBottomPadding = buttonHeight + (buttonVerticalPadding * 2) + 16;
@@ -130,7 +127,7 @@ class _Bottom extends StatelessWidget {
                   color: context.theme.appColors.text,
                 ),
               ),
-              subtitle: StartsWidget(
+              subtitle: StarsWidget(
                 count: 5,
                 color: context.theme.appColors.starColor,
                 size: 12,

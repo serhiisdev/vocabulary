@@ -73,14 +73,16 @@ class OnboardingFlowWrapper extends StatelessWidget {
         buildWhen: (a, b) => a.hasPreviousStep != b.hasPreviousStep,
         builder: (context, state) {
           final bloc = context.read<OnboardingBloc>();
-          return PopScope(
+          Widget childResolved = child;
+          childResolved = PopScope(
             canPop: !state.hasPreviousStep,
             onPopInvokedWithResult: (didPop, result) {
               if (didPop) return;
               _handlePop(bloc);
             },
-            child: child,
+            child: childResolved,
           );
+          return childResolved;
         },
       ),
     );

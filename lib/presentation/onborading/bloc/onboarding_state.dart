@@ -4,9 +4,18 @@ part of 'onboarding_bloc.dart';
 sealed class OnboardingState with _$OnboardingState {
   const factory OnboardingState({
     @Default(BlocStatus.initial()) BlocStatus status,
+    @Default(BlocStatus.initial()) BlocStatus completeStepStatus,
     @Default(false) bool isOnboardingCompleted,
     required Set<OnboardingStepUi> steps,
     required Set<OnboardingStepUi> completedSteps,
+    OnboardingHowDidYouHearAboutUs? howDidYouHearAboutUs,
+    OnboardingNumOfWords? numOfWords,
+    OnboardingVocabularyLevel? vocabularyLevel,
+    OnboardingSpecificGoal? specificGoal,
+    OnboardingTopics? topics,
+    OnboardingGoalDays? goalDays,
+    OnboardingGender? gender,
+    OnboardingHowOldAreYou? howOldAreYou,
     required int currentStepIndex,
   }) = _OnboardingState;
 
@@ -31,5 +40,9 @@ extension OnboardingStateX on OnboardingState {
 
   bool get hasPreviousStep {
     return currentStepIndex > 0;
+  }
+
+  bool get hasNextStep {
+    return currentStepIndex < steps.length - 1;
   }
 }

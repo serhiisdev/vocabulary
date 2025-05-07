@@ -24,6 +24,8 @@ import 'package:vocabulary/domain/use_cases/onboarding/get_initial_oboarding_ste
     as _i422;
 import 'package:vocabulary/domain/use_cases/onboarding/get_is_oboarding_completed_use_case.dart'
     as _i896;
+import 'package:vocabulary/domain/use_cases/onboarding/save_completed_onboarding_step_use_case.dart'
+    as _i671;
 import 'package:vocabulary/presentation/onborading/bloc/onboarding_bloc.dart'
     as _i631;
 import 'package:vocabulary/presentation/splash/bloc/splash_bloc.dart' as _i46;
@@ -53,6 +55,11 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i974.Logger>(),
       ),
     );
+    gh.factory<_i671.SaveCompletedOnboardingStepUseCase>(
+      () => _i671.SaveCompletedOnboardingStepUseCase(
+        gh<_i1017.OnboardingRepository>(),
+      ),
+    );
     gh.factory<_i242.GetCompletedOnboardingStepsUseCase>(
       () => _i242.GetCompletedOnboardingStepsUseCase(
         gh<_i1017.OnboardingRepository>(),
@@ -75,6 +82,7 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i896.GetIsOnboardingCompletedUseCase>(),
         gh<_i242.GetCompletedOnboardingStepsUseCase>(),
         gh<_i422.GetInitialOnboardingStepUseCase>(),
+        gh<_i671.SaveCompletedOnboardingStepUseCase>(),
         gh<_i974.Logger>(),
       ),
     );

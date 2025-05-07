@@ -45,6 +45,38 @@ $OnboardingEventCopyWith(OnboardingEvent _, $Res Function(OnboardingEvent) __);
 /// @nodoc
 
 
+class _Started implements OnboardingEvent {
+  const _Started();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Started);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'OnboardingEvent.started()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
 class _MarkStepAsCompleted implements OnboardingEvent {
   const _MarkStepAsCompleted(this.step);
   
@@ -271,9 +303,537 @@ String toString() {
 
 
 /// @nodoc
+
+
+class _HowDidYouHearAboutUsSelected implements OnboardingEvent {
+  const _HowDidYouHearAboutUsSelected(this.item);
+  
+
+ final  OnboardingHowDidYouHearAboutUs item;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$HowDidYouHearAboutUsSelectedCopyWith<_HowDidYouHearAboutUsSelected> get copyWith => __$HowDidYouHearAboutUsSelectedCopyWithImpl<_HowDidYouHearAboutUsSelected>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HowDidYouHearAboutUsSelected&&(identical(other.item, item) || other.item == item));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,item);
+
+@override
+String toString() {
+  return 'OnboardingEvent.howDidYouHearAboutUsSelected(item: $item)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$HowDidYouHearAboutUsSelectedCopyWith<$Res> implements $OnboardingEventCopyWith<$Res> {
+  factory _$HowDidYouHearAboutUsSelectedCopyWith(_HowDidYouHearAboutUsSelected value, $Res Function(_HowDidYouHearAboutUsSelected) _then) = __$HowDidYouHearAboutUsSelectedCopyWithImpl;
+@useResult
+$Res call({
+ OnboardingHowDidYouHearAboutUs item
+});
+
+
+
+
+}
+/// @nodoc
+class __$HowDidYouHearAboutUsSelectedCopyWithImpl<$Res>
+    implements _$HowDidYouHearAboutUsSelectedCopyWith<$Res> {
+  __$HowDidYouHearAboutUsSelectedCopyWithImpl(this._self, this._then);
+
+  final _HowDidYouHearAboutUsSelected _self;
+  final $Res Function(_HowDidYouHearAboutUsSelected) _then;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? item = null,}) {
+  return _then(_HowDidYouHearAboutUsSelected(
+null == item ? _self.item : item // ignore: cast_nullable_to_non_nullable
+as OnboardingHowDidYouHearAboutUs,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _NumOfWordsSelected implements OnboardingEvent {
+  const _NumOfWordsSelected(this.item);
+  
+
+ final  OnboardingNumOfWords item;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$NumOfWordsSelectedCopyWith<_NumOfWordsSelected> get copyWith => __$NumOfWordsSelectedCopyWithImpl<_NumOfWordsSelected>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NumOfWordsSelected&&(identical(other.item, item) || other.item == item));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,item);
+
+@override
+String toString() {
+  return 'OnboardingEvent.numOfWordsSelected(item: $item)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$NumOfWordsSelectedCopyWith<$Res> implements $OnboardingEventCopyWith<$Res> {
+  factory _$NumOfWordsSelectedCopyWith(_NumOfWordsSelected value, $Res Function(_NumOfWordsSelected) _then) = __$NumOfWordsSelectedCopyWithImpl;
+@useResult
+$Res call({
+ OnboardingNumOfWords item
+});
+
+
+
+
+}
+/// @nodoc
+class __$NumOfWordsSelectedCopyWithImpl<$Res>
+    implements _$NumOfWordsSelectedCopyWith<$Res> {
+  __$NumOfWordsSelectedCopyWithImpl(this._self, this._then);
+
+  final _NumOfWordsSelected _self;
+  final $Res Function(_NumOfWordsSelected) _then;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? item = null,}) {
+  return _then(_NumOfWordsSelected(
+null == item ? _self.item : item // ignore: cast_nullable_to_non_nullable
+as OnboardingNumOfWords,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _VocabularyLevelSelected implements OnboardingEvent {
+  const _VocabularyLevelSelected(this.item);
+  
+
+ final  OnboardingVocabularyLevel item;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$VocabularyLevelSelectedCopyWith<_VocabularyLevelSelected> get copyWith => __$VocabularyLevelSelectedCopyWithImpl<_VocabularyLevelSelected>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VocabularyLevelSelected&&(identical(other.item, item) || other.item == item));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,item);
+
+@override
+String toString() {
+  return 'OnboardingEvent.vocabularyLevelSelected(item: $item)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$VocabularyLevelSelectedCopyWith<$Res> implements $OnboardingEventCopyWith<$Res> {
+  factory _$VocabularyLevelSelectedCopyWith(_VocabularyLevelSelected value, $Res Function(_VocabularyLevelSelected) _then) = __$VocabularyLevelSelectedCopyWithImpl;
+@useResult
+$Res call({
+ OnboardingVocabularyLevel item
+});
+
+
+
+
+}
+/// @nodoc
+class __$VocabularyLevelSelectedCopyWithImpl<$Res>
+    implements _$VocabularyLevelSelectedCopyWith<$Res> {
+  __$VocabularyLevelSelectedCopyWithImpl(this._self, this._then);
+
+  final _VocabularyLevelSelected _self;
+  final $Res Function(_VocabularyLevelSelected) _then;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? item = null,}) {
+  return _then(_VocabularyLevelSelected(
+null == item ? _self.item : item // ignore: cast_nullable_to_non_nullable
+as OnboardingVocabularyLevel,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _SpecificGoalSelected implements OnboardingEvent {
+  const _SpecificGoalSelected(this.item);
+  
+
+ final  OnboardingSpecificGoal item;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SpecificGoalSelectedCopyWith<_SpecificGoalSelected> get copyWith => __$SpecificGoalSelectedCopyWithImpl<_SpecificGoalSelected>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SpecificGoalSelected&&(identical(other.item, item) || other.item == item));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,item);
+
+@override
+String toString() {
+  return 'OnboardingEvent.specificGoalSelected(item: $item)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SpecificGoalSelectedCopyWith<$Res> implements $OnboardingEventCopyWith<$Res> {
+  factory _$SpecificGoalSelectedCopyWith(_SpecificGoalSelected value, $Res Function(_SpecificGoalSelected) _then) = __$SpecificGoalSelectedCopyWithImpl;
+@useResult
+$Res call({
+ OnboardingSpecificGoal item
+});
+
+
+
+
+}
+/// @nodoc
+class __$SpecificGoalSelectedCopyWithImpl<$Res>
+    implements _$SpecificGoalSelectedCopyWith<$Res> {
+  __$SpecificGoalSelectedCopyWithImpl(this._self, this._then);
+
+  final _SpecificGoalSelected _self;
+  final $Res Function(_SpecificGoalSelected) _then;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? item = null,}) {
+  return _then(_SpecificGoalSelected(
+null == item ? _self.item : item // ignore: cast_nullable_to_non_nullable
+as OnboardingSpecificGoal,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _TopicsSelected implements OnboardingEvent {
+  const _TopicsSelected(this.item);
+  
+
+ final  OnboardingTopics item;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$TopicsSelectedCopyWith<_TopicsSelected> get copyWith => __$TopicsSelectedCopyWithImpl<_TopicsSelected>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TopicsSelected&&(identical(other.item, item) || other.item == item));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,item);
+
+@override
+String toString() {
+  return 'OnboardingEvent.topicsSelected(item: $item)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$TopicsSelectedCopyWith<$Res> implements $OnboardingEventCopyWith<$Res> {
+  factory _$TopicsSelectedCopyWith(_TopicsSelected value, $Res Function(_TopicsSelected) _then) = __$TopicsSelectedCopyWithImpl;
+@useResult
+$Res call({
+ OnboardingTopics item
+});
+
+
+
+
+}
+/// @nodoc
+class __$TopicsSelectedCopyWithImpl<$Res>
+    implements _$TopicsSelectedCopyWith<$Res> {
+  __$TopicsSelectedCopyWithImpl(this._self, this._then);
+
+  final _TopicsSelected _self;
+  final $Res Function(_TopicsSelected) _then;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? item = null,}) {
+  return _then(_TopicsSelected(
+null == item ? _self.item : item // ignore: cast_nullable_to_non_nullable
+as OnboardingTopics,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _GoalDaysSelected implements OnboardingEvent {
+  const _GoalDaysSelected(this.item);
+  
+
+ final  OnboardingGoalDays item;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GoalDaysSelectedCopyWith<_GoalDaysSelected> get copyWith => __$GoalDaysSelectedCopyWithImpl<_GoalDaysSelected>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GoalDaysSelected&&(identical(other.item, item) || other.item == item));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,item);
+
+@override
+String toString() {
+  return 'OnboardingEvent.goalDaysSelected(item: $item)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$GoalDaysSelectedCopyWith<$Res> implements $OnboardingEventCopyWith<$Res> {
+  factory _$GoalDaysSelectedCopyWith(_GoalDaysSelected value, $Res Function(_GoalDaysSelected) _then) = __$GoalDaysSelectedCopyWithImpl;
+@useResult
+$Res call({
+ OnboardingGoalDays item
+});
+
+
+
+
+}
+/// @nodoc
+class __$GoalDaysSelectedCopyWithImpl<$Res>
+    implements _$GoalDaysSelectedCopyWith<$Res> {
+  __$GoalDaysSelectedCopyWithImpl(this._self, this._then);
+
+  final _GoalDaysSelected _self;
+  final $Res Function(_GoalDaysSelected) _then;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? item = null,}) {
+  return _then(_GoalDaysSelected(
+null == item ? _self.item : item // ignore: cast_nullable_to_non_nullable
+as OnboardingGoalDays,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _GenderSelected implements OnboardingEvent {
+  const _GenderSelected(this.item);
+  
+
+ final  OnboardingGender item;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GenderSelectedCopyWith<_GenderSelected> get copyWith => __$GenderSelectedCopyWithImpl<_GenderSelected>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GenderSelected&&(identical(other.item, item) || other.item == item));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,item);
+
+@override
+String toString() {
+  return 'OnboardingEvent.genderSelected(item: $item)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$GenderSelectedCopyWith<$Res> implements $OnboardingEventCopyWith<$Res> {
+  factory _$GenderSelectedCopyWith(_GenderSelected value, $Res Function(_GenderSelected) _then) = __$GenderSelectedCopyWithImpl;
+@useResult
+$Res call({
+ OnboardingGender item
+});
+
+
+
+
+}
+/// @nodoc
+class __$GenderSelectedCopyWithImpl<$Res>
+    implements _$GenderSelectedCopyWith<$Res> {
+  __$GenderSelectedCopyWithImpl(this._self, this._then);
+
+  final _GenderSelected _self;
+  final $Res Function(_GenderSelected) _then;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? item = null,}) {
+  return _then(_GenderSelected(
+null == item ? _self.item : item // ignore: cast_nullable_to_non_nullable
+as OnboardingGender,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _HowOldAreYouSelected implements OnboardingEvent {
+  const _HowOldAreYouSelected(this.item);
+  
+
+ final  OnboardingHowOldAreYou item;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$HowOldAreYouSelectedCopyWith<_HowOldAreYouSelected> get copyWith => __$HowOldAreYouSelectedCopyWithImpl<_HowOldAreYouSelected>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HowOldAreYouSelected&&(identical(other.item, item) || other.item == item));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,item);
+
+@override
+String toString() {
+  return 'OnboardingEvent.howOldAreYouSelected(item: $item)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$HowOldAreYouSelectedCopyWith<$Res> implements $OnboardingEventCopyWith<$Res> {
+  factory _$HowOldAreYouSelectedCopyWith(_HowOldAreYouSelected value, $Res Function(_HowOldAreYouSelected) _then) = __$HowOldAreYouSelectedCopyWithImpl;
+@useResult
+$Res call({
+ OnboardingHowOldAreYou item
+});
+
+
+
+
+}
+/// @nodoc
+class __$HowOldAreYouSelectedCopyWithImpl<$Res>
+    implements _$HowOldAreYouSelectedCopyWith<$Res> {
+  __$HowOldAreYouSelectedCopyWithImpl(this._self, this._then);
+
+  final _HowOldAreYouSelected _self;
+  final $Res Function(_HowOldAreYouSelected) _then;
+
+/// Create a copy of OnboardingEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? item = null,}) {
+  return _then(_HowOldAreYouSelected(
+null == item ? _self.item : item // ignore: cast_nullable_to_non_nullable
+as OnboardingHowOldAreYou,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$OnboardingState {
 
- BlocStatus get status; bool get isOnboardingCompleted; Set<OnboardingStepUi> get steps; Set<OnboardingStepUi> get completedSteps; int get currentStepIndex;
+ BlocStatus get status; BlocStatus get completeStepStatus; bool get isOnboardingCompleted; Set<OnboardingStepUi> get steps; Set<OnboardingStepUi> get completedSteps; OnboardingHowDidYouHearAboutUs? get howDidYouHearAboutUs; OnboardingNumOfWords? get numOfWords; OnboardingVocabularyLevel? get vocabularyLevel; OnboardingSpecificGoal? get specificGoal; OnboardingTopics? get topics; OnboardingGoalDays? get goalDays; OnboardingGender? get gender; OnboardingHowOldAreYou? get howOldAreYou; int get currentStepIndex;
 /// Create a copy of OnboardingState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -284,16 +844,16 @@ $OnboardingStateCopyWith<OnboardingState> get copyWith => _$OnboardingStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnboardingState&&(identical(other.status, status) || other.status == status)&&(identical(other.isOnboardingCompleted, isOnboardingCompleted) || other.isOnboardingCompleted == isOnboardingCompleted)&&const DeepCollectionEquality().equals(other.steps, steps)&&const DeepCollectionEquality().equals(other.completedSteps, completedSteps)&&(identical(other.currentStepIndex, currentStepIndex) || other.currentStepIndex == currentStepIndex));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OnboardingState&&(identical(other.status, status) || other.status == status)&&(identical(other.completeStepStatus, completeStepStatus) || other.completeStepStatus == completeStepStatus)&&(identical(other.isOnboardingCompleted, isOnboardingCompleted) || other.isOnboardingCompleted == isOnboardingCompleted)&&const DeepCollectionEquality().equals(other.steps, steps)&&const DeepCollectionEquality().equals(other.completedSteps, completedSteps)&&(identical(other.howDidYouHearAboutUs, howDidYouHearAboutUs) || other.howDidYouHearAboutUs == howDidYouHearAboutUs)&&(identical(other.numOfWords, numOfWords) || other.numOfWords == numOfWords)&&(identical(other.vocabularyLevel, vocabularyLevel) || other.vocabularyLevel == vocabularyLevel)&&(identical(other.specificGoal, specificGoal) || other.specificGoal == specificGoal)&&(identical(other.topics, topics) || other.topics == topics)&&(identical(other.goalDays, goalDays) || other.goalDays == goalDays)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.howOldAreYou, howOldAreYou) || other.howOldAreYou == howOldAreYou)&&(identical(other.currentStepIndex, currentStepIndex) || other.currentStepIndex == currentStepIndex));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,isOnboardingCompleted,const DeepCollectionEquality().hash(steps),const DeepCollectionEquality().hash(completedSteps),currentStepIndex);
+int get hashCode => Object.hash(runtimeType,status,completeStepStatus,isOnboardingCompleted,const DeepCollectionEquality().hash(steps),const DeepCollectionEquality().hash(completedSteps),howDidYouHearAboutUs,numOfWords,vocabularyLevel,specificGoal,topics,goalDays,gender,howOldAreYou,currentStepIndex);
 
 @override
 String toString() {
-  return 'OnboardingState(status: $status, isOnboardingCompleted: $isOnboardingCompleted, steps: $steps, completedSteps: $completedSteps, currentStepIndex: $currentStepIndex)';
+  return 'OnboardingState(status: $status, completeStepStatus: $completeStepStatus, isOnboardingCompleted: $isOnboardingCompleted, steps: $steps, completedSteps: $completedSteps, howDidYouHearAboutUs: $howDidYouHearAboutUs, numOfWords: $numOfWords, vocabularyLevel: $vocabularyLevel, specificGoal: $specificGoal, topics: $topics, goalDays: $goalDays, gender: $gender, howOldAreYou: $howOldAreYou, currentStepIndex: $currentStepIndex)';
 }
 
 
@@ -304,11 +864,11 @@ abstract mixin class $OnboardingStateCopyWith<$Res>  {
   factory $OnboardingStateCopyWith(OnboardingState value, $Res Function(OnboardingState) _then) = _$OnboardingStateCopyWithImpl;
 @useResult
 $Res call({
- BlocStatus status, bool isOnboardingCompleted, Set<OnboardingStepUi> steps, Set<OnboardingStepUi> completedSteps, int currentStepIndex
+ BlocStatus status, BlocStatus completeStepStatus, bool isOnboardingCompleted, Set<OnboardingStepUi> steps, Set<OnboardingStepUi> completedSteps, OnboardingHowDidYouHearAboutUs? howDidYouHearAboutUs, OnboardingNumOfWords? numOfWords, OnboardingVocabularyLevel? vocabularyLevel, OnboardingSpecificGoal? specificGoal, OnboardingTopics? topics, OnboardingGoalDays? goalDays, OnboardingGender? gender, OnboardingHowOldAreYou? howOldAreYou, int currentStepIndex
 });
 
 
-$BlocStatusCopyWith<dynamic, $Res> get status;
+$BlocStatusCopyWith<dynamic, $Res> get status;$BlocStatusCopyWith<dynamic, $Res> get completeStepStatus;
 
 }
 /// @nodoc
@@ -321,13 +881,22 @@ class _$OnboardingStateCopyWithImpl<$Res>
 
 /// Create a copy of OnboardingState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? isOnboardingCompleted = null,Object? steps = null,Object? completedSteps = null,Object? currentStepIndex = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? completeStepStatus = null,Object? isOnboardingCompleted = null,Object? steps = null,Object? completedSteps = null,Object? howDidYouHearAboutUs = freezed,Object? numOfWords = freezed,Object? vocabularyLevel = freezed,Object? specificGoal = freezed,Object? topics = freezed,Object? goalDays = freezed,Object? gender = freezed,Object? howOldAreYou = freezed,Object? currentStepIndex = null,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as BlocStatus,completeStepStatus: null == completeStepStatus ? _self.completeStepStatus : completeStepStatus // ignore: cast_nullable_to_non_nullable
 as BlocStatus,isOnboardingCompleted: null == isOnboardingCompleted ? _self.isOnboardingCompleted : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
 as bool,steps: null == steps ? _self.steps : steps // ignore: cast_nullable_to_non_nullable
 as Set<OnboardingStepUi>,completedSteps: null == completedSteps ? _self.completedSteps : completedSteps // ignore: cast_nullable_to_non_nullable
-as Set<OnboardingStepUi>,currentStepIndex: null == currentStepIndex ? _self.currentStepIndex : currentStepIndex // ignore: cast_nullable_to_non_nullable
+as Set<OnboardingStepUi>,howDidYouHearAboutUs: freezed == howDidYouHearAboutUs ? _self.howDidYouHearAboutUs : howDidYouHearAboutUs // ignore: cast_nullable_to_non_nullable
+as OnboardingHowDidYouHearAboutUs?,numOfWords: freezed == numOfWords ? _self.numOfWords : numOfWords // ignore: cast_nullable_to_non_nullable
+as OnboardingNumOfWords?,vocabularyLevel: freezed == vocabularyLevel ? _self.vocabularyLevel : vocabularyLevel // ignore: cast_nullable_to_non_nullable
+as OnboardingVocabularyLevel?,specificGoal: freezed == specificGoal ? _self.specificGoal : specificGoal // ignore: cast_nullable_to_non_nullable
+as OnboardingSpecificGoal?,topics: freezed == topics ? _self.topics : topics // ignore: cast_nullable_to_non_nullable
+as OnboardingTopics?,goalDays: freezed == goalDays ? _self.goalDays : goalDays // ignore: cast_nullable_to_non_nullable
+as OnboardingGoalDays?,gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
+as OnboardingGender?,howOldAreYou: freezed == howOldAreYou ? _self.howOldAreYou : howOldAreYou // ignore: cast_nullable_to_non_nullable
+as OnboardingHowOldAreYou?,currentStepIndex: null == currentStepIndex ? _self.currentStepIndex : currentStepIndex // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -340,6 +909,15 @@ $BlocStatusCopyWith<dynamic, $Res> get status {
   return $BlocStatusCopyWith<dynamic, $Res>(_self.status, (value) {
     return _then(_self.copyWith(status: value));
   });
+}/// Create a copy of OnboardingState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BlocStatusCopyWith<dynamic, $Res> get completeStepStatus {
+  
+  return $BlocStatusCopyWith<dynamic, $Res>(_self.completeStepStatus, (value) {
+    return _then(_self.copyWith(completeStepStatus: value));
+  });
 }
 }
 
@@ -348,10 +926,11 @@ $BlocStatusCopyWith<dynamic, $Res> get status {
 
 
 class _OnboardingState implements OnboardingState {
-  const _OnboardingState({this.status = const BlocStatus.initial(), this.isOnboardingCompleted = false, required final  Set<OnboardingStepUi> steps, required final  Set<OnboardingStepUi> completedSteps, required this.currentStepIndex}): _steps = steps,_completedSteps = completedSteps;
+  const _OnboardingState({this.status = const BlocStatus.initial(), this.completeStepStatus = const BlocStatus.initial(), this.isOnboardingCompleted = false, required final  Set<OnboardingStepUi> steps, required final  Set<OnboardingStepUi> completedSteps, this.howDidYouHearAboutUs, this.numOfWords, this.vocabularyLevel, this.specificGoal, this.topics, this.goalDays, this.gender, this.howOldAreYou, required this.currentStepIndex}): _steps = steps,_completedSteps = completedSteps;
   
 
 @override@JsonKey() final  BlocStatus status;
+@override@JsonKey() final  BlocStatus completeStepStatus;
 @override@JsonKey() final  bool isOnboardingCompleted;
  final  Set<OnboardingStepUi> _steps;
 @override Set<OnboardingStepUi> get steps {
@@ -367,6 +946,14 @@ class _OnboardingState implements OnboardingState {
   return EqualUnmodifiableSetView(_completedSteps);
 }
 
+@override final  OnboardingHowDidYouHearAboutUs? howDidYouHearAboutUs;
+@override final  OnboardingNumOfWords? numOfWords;
+@override final  OnboardingVocabularyLevel? vocabularyLevel;
+@override final  OnboardingSpecificGoal? specificGoal;
+@override final  OnboardingTopics? topics;
+@override final  OnboardingGoalDays? goalDays;
+@override final  OnboardingGender? gender;
+@override final  OnboardingHowOldAreYou? howOldAreYou;
 @override final  int currentStepIndex;
 
 /// Create a copy of OnboardingState
@@ -379,16 +966,16 @@ _$OnboardingStateCopyWith<_OnboardingState> get copyWith => __$OnboardingStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OnboardingState&&(identical(other.status, status) || other.status == status)&&(identical(other.isOnboardingCompleted, isOnboardingCompleted) || other.isOnboardingCompleted == isOnboardingCompleted)&&const DeepCollectionEquality().equals(other._steps, _steps)&&const DeepCollectionEquality().equals(other._completedSteps, _completedSteps)&&(identical(other.currentStepIndex, currentStepIndex) || other.currentStepIndex == currentStepIndex));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OnboardingState&&(identical(other.status, status) || other.status == status)&&(identical(other.completeStepStatus, completeStepStatus) || other.completeStepStatus == completeStepStatus)&&(identical(other.isOnboardingCompleted, isOnboardingCompleted) || other.isOnboardingCompleted == isOnboardingCompleted)&&const DeepCollectionEquality().equals(other._steps, _steps)&&const DeepCollectionEquality().equals(other._completedSteps, _completedSteps)&&(identical(other.howDidYouHearAboutUs, howDidYouHearAboutUs) || other.howDidYouHearAboutUs == howDidYouHearAboutUs)&&(identical(other.numOfWords, numOfWords) || other.numOfWords == numOfWords)&&(identical(other.vocabularyLevel, vocabularyLevel) || other.vocabularyLevel == vocabularyLevel)&&(identical(other.specificGoal, specificGoal) || other.specificGoal == specificGoal)&&(identical(other.topics, topics) || other.topics == topics)&&(identical(other.goalDays, goalDays) || other.goalDays == goalDays)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.howOldAreYou, howOldAreYou) || other.howOldAreYou == howOldAreYou)&&(identical(other.currentStepIndex, currentStepIndex) || other.currentStepIndex == currentStepIndex));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,isOnboardingCompleted,const DeepCollectionEquality().hash(_steps),const DeepCollectionEquality().hash(_completedSteps),currentStepIndex);
+int get hashCode => Object.hash(runtimeType,status,completeStepStatus,isOnboardingCompleted,const DeepCollectionEquality().hash(_steps),const DeepCollectionEquality().hash(_completedSteps),howDidYouHearAboutUs,numOfWords,vocabularyLevel,specificGoal,topics,goalDays,gender,howOldAreYou,currentStepIndex);
 
 @override
 String toString() {
-  return 'OnboardingState(status: $status, isOnboardingCompleted: $isOnboardingCompleted, steps: $steps, completedSteps: $completedSteps, currentStepIndex: $currentStepIndex)';
+  return 'OnboardingState(status: $status, completeStepStatus: $completeStepStatus, isOnboardingCompleted: $isOnboardingCompleted, steps: $steps, completedSteps: $completedSteps, howDidYouHearAboutUs: $howDidYouHearAboutUs, numOfWords: $numOfWords, vocabularyLevel: $vocabularyLevel, specificGoal: $specificGoal, topics: $topics, goalDays: $goalDays, gender: $gender, howOldAreYou: $howOldAreYou, currentStepIndex: $currentStepIndex)';
 }
 
 
@@ -399,11 +986,11 @@ abstract mixin class _$OnboardingStateCopyWith<$Res> implements $OnboardingState
   factory _$OnboardingStateCopyWith(_OnboardingState value, $Res Function(_OnboardingState) _then) = __$OnboardingStateCopyWithImpl;
 @override @useResult
 $Res call({
- BlocStatus status, bool isOnboardingCompleted, Set<OnboardingStepUi> steps, Set<OnboardingStepUi> completedSteps, int currentStepIndex
+ BlocStatus status, BlocStatus completeStepStatus, bool isOnboardingCompleted, Set<OnboardingStepUi> steps, Set<OnboardingStepUi> completedSteps, OnboardingHowDidYouHearAboutUs? howDidYouHearAboutUs, OnboardingNumOfWords? numOfWords, OnboardingVocabularyLevel? vocabularyLevel, OnboardingSpecificGoal? specificGoal, OnboardingTopics? topics, OnboardingGoalDays? goalDays, OnboardingGender? gender, OnboardingHowOldAreYou? howOldAreYou, int currentStepIndex
 });
 
 
-@override $BlocStatusCopyWith<dynamic, $Res> get status;
+@override $BlocStatusCopyWith<dynamic, $Res> get status;@override $BlocStatusCopyWith<dynamic, $Res> get completeStepStatus;
 
 }
 /// @nodoc
@@ -416,13 +1003,22 @@ class __$OnboardingStateCopyWithImpl<$Res>
 
 /// Create a copy of OnboardingState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? isOnboardingCompleted = null,Object? steps = null,Object? completedSteps = null,Object? currentStepIndex = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? completeStepStatus = null,Object? isOnboardingCompleted = null,Object? steps = null,Object? completedSteps = null,Object? howDidYouHearAboutUs = freezed,Object? numOfWords = freezed,Object? vocabularyLevel = freezed,Object? specificGoal = freezed,Object? topics = freezed,Object? goalDays = freezed,Object? gender = freezed,Object? howOldAreYou = freezed,Object? currentStepIndex = null,}) {
   return _then(_OnboardingState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as BlocStatus,completeStepStatus: null == completeStepStatus ? _self.completeStepStatus : completeStepStatus // ignore: cast_nullable_to_non_nullable
 as BlocStatus,isOnboardingCompleted: null == isOnboardingCompleted ? _self.isOnboardingCompleted : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
 as bool,steps: null == steps ? _self._steps : steps // ignore: cast_nullable_to_non_nullable
 as Set<OnboardingStepUi>,completedSteps: null == completedSteps ? _self._completedSteps : completedSteps // ignore: cast_nullable_to_non_nullable
-as Set<OnboardingStepUi>,currentStepIndex: null == currentStepIndex ? _self.currentStepIndex : currentStepIndex // ignore: cast_nullable_to_non_nullable
+as Set<OnboardingStepUi>,howDidYouHearAboutUs: freezed == howDidYouHearAboutUs ? _self.howDidYouHearAboutUs : howDidYouHearAboutUs // ignore: cast_nullable_to_non_nullable
+as OnboardingHowDidYouHearAboutUs?,numOfWords: freezed == numOfWords ? _self.numOfWords : numOfWords // ignore: cast_nullable_to_non_nullable
+as OnboardingNumOfWords?,vocabularyLevel: freezed == vocabularyLevel ? _self.vocabularyLevel : vocabularyLevel // ignore: cast_nullable_to_non_nullable
+as OnboardingVocabularyLevel?,specificGoal: freezed == specificGoal ? _self.specificGoal : specificGoal // ignore: cast_nullable_to_non_nullable
+as OnboardingSpecificGoal?,topics: freezed == topics ? _self.topics : topics // ignore: cast_nullable_to_non_nullable
+as OnboardingTopics?,goalDays: freezed == goalDays ? _self.goalDays : goalDays // ignore: cast_nullable_to_non_nullable
+as OnboardingGoalDays?,gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
+as OnboardingGender?,howOldAreYou: freezed == howOldAreYou ? _self.howOldAreYou : howOldAreYou // ignore: cast_nullable_to_non_nullable
+as OnboardingHowOldAreYou?,currentStepIndex: null == currentStepIndex ? _self.currentStepIndex : currentStepIndex // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -435,6 +1031,15 @@ $BlocStatusCopyWith<dynamic, $Res> get status {
   
   return $BlocStatusCopyWith<dynamic, $Res>(_self.status, (value) {
     return _then(_self.copyWith(status: value));
+  });
+}/// Create a copy of OnboardingState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BlocStatusCopyWith<dynamic, $Res> get completeStepStatus {
+  
+  return $BlocStatusCopyWith<dynamic, $Res>(_self.completeStepStatus, (value) {
+    return _then(_self.copyWith(completeStepStatus: value));
   });
 }
 }

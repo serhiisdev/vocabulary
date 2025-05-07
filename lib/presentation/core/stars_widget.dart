@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class StartsWidget extends StatelessWidget {
+class StarsWidget extends StatelessWidget {
   final int count;
   final Color? color;
   final double? size;
   final double spacing;
-  const StartsWidget({
+  const StarsWidget({
     super.key,
     required this.count,
     this.color,
