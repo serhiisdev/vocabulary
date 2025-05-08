@@ -5,7 +5,7 @@ enum OnboardingStep {
   tailorYourWordRecomendationIntro(2),
   howOldAreYou(3),
   genderSelection(4),
-  customizeYourAppIntro(5),
+  customizeTheAppIntro(5),
   howManyWords(6),
   vocabularyLevel(7),
   setupVocabularyIntro(8),

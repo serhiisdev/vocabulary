@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:vocabulary/presentation/onborading/data/onboarding_step_ui.dart';
-import 'package:vocabulary/presentation/onborading/screens/steps/customize_your_app/how_many_words/how_many_words_onboarding_screen.dart';
-import 'package:vocabulary/presentation/onborading/screens/steps/customize_your_app/intro/customize_your_app_intro_onboarding_screen.dart';
-import 'package:vocabulary/presentation/onborading/screens/steps/customize_your_app/vocabulary_level/vocabulary_level_onboarding_screen.dart';
+import 'package:vocabulary/presentation/onborading/screens/steps/customize_the_app/how_many_words/how_many_words_onboarding_screen.dart';
+import 'package:vocabulary/presentation/onborading/screens/steps/customize_the_app/intro/customize_the_app_intro_onboarding_screen.dart';
+import 'package:vocabulary/presentation/onborading/screens/steps/customize_the_app/vocabulary_level/vocabulary_level_onboarding_screen.dart';
 import 'package:vocabulary/presentation/onborading/screens/steps/how_did_you_hear_about_app/how_did_you_hear_about_app_onboarding_screen.dart';
 import 'package:vocabulary/presentation/onborading/screens/steps/setup_vocabulary/goal_days/goal_days_onboarding_screen.dart';
 import 'package:vocabulary/presentation/onborading/screens/steps/setup_vocabulary/goal_purpose/goal_purpose_onboarding_screen.dart';
@@ -22,7 +22,7 @@ abstract class OnboardingScreenResolver {
         const TailorYourWordRecomendationIntroOnboardingScreen(),
       OnboardingStepUi.howOldAreYou => const HowOldAreYouOnboardingScreen(),
       OnboardingStepUi.genderSelection => const GenderSelectionOnboardingScreen(),
-      OnboardingStepUi.customizeYourAppIntro =>
+      OnboardingStepUi.customizeTheAppIntro =>
         const CustomizeYourAppIntroOnboardingScreen(),
       OnboardingStepUi.howManyWords => const HowManyWordsOnboardingScreen(),
       OnboardingStepUi.vocabularyLevel => const VocabularyLevelOnboardingScreen(),

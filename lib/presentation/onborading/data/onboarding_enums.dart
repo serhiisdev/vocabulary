@@ -83,7 +83,7 @@ enum OnboardingVocabularyLevel implements Localized {
 }
 
 
-enum OnboardingSpecificGoal implements Localized {
+enum OnboardingGoalPurpose implements Localized {
   enchanceMyLexicon(),
   getReadyForATest(),
   other();
@@ -91,12 +91,12 @@ enum OnboardingSpecificGoal implements Localized {
   @override
   String title(BuildContext context) {
     return switch (this) {
-      OnboardingSpecificGoal.enchanceMyLexicon => 'Enchance my lexicon',
-      OnboardingSpecificGoal.getReadyForATest => 'Get ready for a test',
-      OnboardingSpecificGoal.other => 'Other',
+      OnboardingGoalPurpose.enchanceMyLexicon => 'Enchance my lexicon',
+      OnboardingGoalPurpose.getReadyForATest => 'Get ready for a test',
+      OnboardingGoalPurpose.other => 'Other',
     };
   }
-  const OnboardingSpecificGoal();
+  const OnboardingGoalPurpose();
 }
 
 enum OnboardingTopics implements Localized {

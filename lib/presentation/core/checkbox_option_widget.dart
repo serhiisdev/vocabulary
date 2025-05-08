@@ -21,8 +21,8 @@ class CheckboxOptionWidget extends StatefulWidget {
     required this.onTap,
     required this.onSelectedAnimationCompleted,
     this.containerPadding = const EdgeInsets.symmetric(
-      horizontal: 16,
-      vertical: 16,
+      horizontal: 24,
+      vertical: 12,
     ),
     this.borderRadius = 26,
     required this.isSelected,
@@ -53,7 +53,7 @@ class _CheckboxOptionWidgetState extends State<CheckboxOptionWidget>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(milliseconds: 200),
+      duration: Duration(milliseconds: 300),
       vsync: this,
     );
 

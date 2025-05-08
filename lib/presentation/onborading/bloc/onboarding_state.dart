@@ -11,7 +11,7 @@ sealed class OnboardingState with _$OnboardingState {
     OnboardingHowDidYouHearAboutUs? howDidYouHearAboutUs,
     OnboardingNumOfWords? numOfWords,
     OnboardingVocabularyLevel? vocabularyLevel,
-    OnboardingSpecificGoal? specificGoal,
+    OnboardingGoalPurpose? goalPurpose,
     OnboardingTopics? topics,
     OnboardingGoalDays? goalDays,
     OnboardingGender? gender,

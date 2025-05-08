@@ -6,8 +6,8 @@ import 'package:vocabulary/presentation/onborading/config/onboarding_pop_screen_
 import 'package:vocabulary/presentation/onborading/data/onboarding_step_ui.dart';
 import 'package:vocabulary/presentation/onborading/widgets/scaffold/onboarding_intro_scaffold.dart';
 
-class TailorYourWordRecomendationIntroOnboardingScreen extends StatelessWidget {
-  const TailorYourWordRecomendationIntroOnboardingScreen({super.key});
+class CustomizeYourAppIntroOnboardingScreen extends StatelessWidget {
+  const CustomizeYourAppIntroOnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class TailorYourWordRecomendationIntroOnboardingScreen extends StatelessWidget {
       onContinue: () {
         bloc.add(
           const OnboardingEvent.markStepAsCompleted(
-            OnboardingStepUi.tailorYourWordRecomendationIntro,
+            OnboardingStepUi.customizeTheAppIntro,
           ),
         );
         bloc.add(const OnboardingEvent.goToNextStep());
@@ -27,7 +27,7 @@ class TailorYourWordRecomendationIntroOnboardingScreen extends StatelessWidget {
       onSkip: () {
         bloc.add(const OnboardingEvent.skip());
       },
-      title: context.localizations.tailorYourWordRecommendations,
+      title: context.localizations.customizeTheAppToImproveYourExperience,
     );
   }
 }
