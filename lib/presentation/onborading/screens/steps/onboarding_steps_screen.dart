@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vocabulary/presentation/onborading/bloc/onboarding_bloc.dart';
 import 'package:vocabulary/presentation/onborading/config/onboarding_screen_resolver.dart';
-import 'package:vocabulary/presentation/onborading/screens/core/onboarding_flow_wrapper/onboarding_flow_wrapper.dart';
+import 'package:vocabulary/presentation/onborading/screens/core/onboarding_flow_wrapper.dart';
 
 class OnboardingStepsScreen extends StatefulWidget {
   const OnboardingStepsScreen({super.key});
