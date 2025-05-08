@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:vocabulary/data/repositories/onboarding_repository.dart';
+import 'package:vocabulary/data/repositories/onboarding/onboarding_repository.dart';
 import 'package:vocabulary/domain/models/onborading/onboarding_step.dart';
 import 'package:vocabulary/core/models/result.dart';
 

@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
-import 'package:vocabulary/data/apis/local/onboarding/onboarding_dao.dart';
+import 'package:vocabulary/data/apis/onboarding/onboarding_dao.dart';
 import 'package:vocabulary/domain/models/onborading/onboarding_step.dart';
 import 'package:vocabulary/core/models/result.dart';
 
