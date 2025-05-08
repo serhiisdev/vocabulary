@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:logger/logger.dart';
 import 'package:injectable/injectable.dart';
-import 'package:vocabulary/data/repositories/onboarding_repository.dart';
+import 'package:vocabulary/data/repositories/onboarding/onboarding_repository.dart';
 import 'package:vocabulary/core/models/bloc_status/bloc_status.dart';
 import 'package:vocabulary/domain/models/onborading/onboarding_step.dart';
 import 'package:vocabulary/domain/use_cases/onboarding/get_completed_oboarding_steps_use_case.dart';
@@ -182,7 +182,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     currentTopics.contains(event.item)
         ? currentTopics.remove(event.item)
         : currentTopics.add(event.item);
-        
+
     emit(state.copyWith(topics: currentTopics));
   }
 

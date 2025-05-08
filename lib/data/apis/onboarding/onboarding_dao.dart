@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vocabulary/data/apis/local/onboarding/config/onboarding_storage_keys.dart';
+import 'package:vocabulary/data/apis/onboarding/config/onboarding_storage_keys.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class OnboardingDao {
