@@ -6,6 +6,7 @@ import 'package:go_transitions/go_transitions.dart';
 import 'package:vocabulary/app/di/get_it.dart';
 import 'package:vocabulary/app/router/screen.dart';
 import 'package:vocabulary/presentation/onborading/bloc/onboarding_bloc.dart';
+import 'package:vocabulary/presentation/onborading/screens/core/onboarding_system_ui_mode_handler_wrapper.dart';
 import 'package:vocabulary/presentation/onborading/screens/steps/onboarding_steps_screen.dart';
 import 'package:vocabulary/presentation/onborading/screens/welcome/welcome_onboarding_screen.dart';
 
@@ -21,7 +22,7 @@ abstract class OnboardingShellRoute {
               (_) =>
                   getIt<OnboardingBloc>()..add(const OnboardingEvent.started()),
           lazy: false,
-          child: child,
+          child: OnboardingSystemUiModeHandlerWrapper(child: child),
         );
       },
       routes: [

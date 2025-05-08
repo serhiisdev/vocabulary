@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vocabulary/app/router/routes/onboarding_shell_route.dart';
 import 'package:vocabulary/app/router/screen.dart';
+import 'package:vocabulary/presentation/home/home_screen.dart';
 import 'package:vocabulary/presentation/splash/splash_screen.dart';
 
 abstract class AppRouterProvider {
@@ -33,11 +34,7 @@ GoRouter _buildGoRouter({
       GoRoute(
         path: '/${Screen.home}',
         name: Screen.home,
-        builder: (context, state) => Container(
-          color: Colors.green,
-          width: 200,
-          height: 200,
-        ),
+        builder: (context, state) => const HomeScreen(),
       ),
     ],
   );
