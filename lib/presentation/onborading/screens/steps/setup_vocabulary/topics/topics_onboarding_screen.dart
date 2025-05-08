@@ -23,7 +23,8 @@ class TopicsOnboardingScreen extends StatelessWidget {
           const OnboardingEvent.markStepAsCompleted(OnboardingStepUi.topics),
         );
       },
-      onSelectedAnimationCompleted: () {
+      isItemSelected: (item) => bloc.state.topics.contains(item),
+      onContinue: () {
         bloc.add(const OnboardingEvent.goToNextStep());
       },
       onSkip: () {
@@ -31,7 +32,7 @@ class TopicsOnboardingScreen extends StatelessWidget {
       },
       title: context.localizations.whichTopicsAreYouInterestedIn,
       subtitle: context.localizations.selectAtLeastOptionToContinue,
-      selectedItem: bloc.state.topics,
+      subtitle2: '(${context.localizations.multiselect.toLowerCase()})',
       items: OnboardingTopics.values,
     );
   }

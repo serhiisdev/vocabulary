@@ -25,6 +25,7 @@ class HowDidYouHearAboutAppOnboardingScreen extends StatelessWidget {
           ),
         );
       },
+      isItemSelected: (item) => bloc.state.howDidYouHearAboutUs == item,
       onSelectedAnimationCompleted: () {
         bloc.add(const OnboardingEvent.goToNextStep());
       },
@@ -33,7 +34,6 @@ class HowDidYouHearAboutAppOnboardingScreen extends StatelessWidget {
       },
       title: context.localizations.howDidYouHearAboutVocabulary,
       subtitle: context.localizations.selectAnOptionToContinue,
-      selectedItem: bloc.state.howDidYouHearAboutUs,
       items: OnboardingHowDidYouHearAboutUs.values,
     );
   }

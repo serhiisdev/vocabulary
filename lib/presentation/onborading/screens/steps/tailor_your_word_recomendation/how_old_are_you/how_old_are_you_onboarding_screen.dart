@@ -25,6 +25,7 @@ class HowOldAreYouOnboardingScreen extends StatelessWidget {
           ),
         );
       },
+      isItemSelected: (item) => bloc.state.howOldAreYou == item,
       onSelectedAnimationCompleted: () {
         bloc.add(const OnboardingEvent.goToNextStep());
       },
@@ -33,7 +34,6 @@ class HowOldAreYouOnboardingScreen extends StatelessWidget {
       },
       title: context.localizations.howOldAreYou,
       subtitle: context.localizations.yourAgeIsUsedToPersonalizeYourContent,
-      selectedItem: bloc.state.howOldAreYou,
       items: OnboardingHowOldAreYou.values,
     );
   }

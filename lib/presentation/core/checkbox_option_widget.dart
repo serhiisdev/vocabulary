@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class CheckboxOptionWidget extends StatefulWidget {
   final VoidCallback onTap;
+
   /// Will not be invoked on initial animation completion. I.e. when the [CheckboxOptionWidget] is first created and initial
   /// [isSelected] is passed to the widget. Will be invoked on subsequent animation completions.
-  final VoidCallback onSelectedAnimationCompleted;
+  final VoidCallback? onSelectedAnimationCompleted;
   final EdgeInsets containerPadding;
   final double borderRadius;
   final bool isSelected;
@@ -68,8 +69,9 @@ class _CheckboxOptionWidgetState extends State<CheckboxOptionWidget>
 
   void _onStatusChanged(AnimationStatus status) {
     if (status == AnimationStatus.completed) {
-      if (!_skipSelectionAnimationCallback) {
-        widget.onSelectedAnimationCompleted();
+      if (widget.onSelectedAnimationCompleted != null &&
+          !_skipSelectionAnimationCallback) {
+        widget.onSelectedAnimationCompleted!();
       } else {
         _skipSelectionAnimationCallback = false;
       }
@@ -116,8 +118,6 @@ class _CheckboxOptionWidgetState extends State<CheckboxOptionWidget>
       _isSelected ? _controller.forward() : _controller.reverse();
     });
   }
-
-
 
   @override
   void dispose() {

@@ -13,6 +13,7 @@ class GoalPurposeOnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<OnboardingBloc>();
+
     return OnboardingQaOptionsScaffold(
       onPop: () {
         OnboardingPopScreenHandler.onPop(context, bloc);
@@ -25,7 +26,8 @@ class GoalPurposeOnboardingScreen extends StatelessWidget {
           ),
         );
       },
-      onSelectedAnimationCompleted: () {
+      isItemSelected: (item) => bloc.state.goalsPurpose.contains(item),
+      onContinue: () {
         bloc.add(const OnboardingEvent.goToNextStep());
       },
       onSkip: () {
@@ -33,7 +35,7 @@ class GoalPurposeOnboardingScreen extends StatelessWidget {
       },
       title: context.localizations.doYouHaveASpecificGoalInMind,
       subtitle: context.localizations.selectAtLeastOptionToContinue,
-      selectedItem: bloc.state.goalPurpose,
+      subtitle2: '(${context.localizations.multiselect.toLowerCase()})',
       items: OnboardingGoalPurpose.values,
     );
   }

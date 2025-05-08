@@ -20,6 +20,7 @@ class HowManyWordsOnboardingScreen extends StatelessWidget {
           OnboardingEvent.markStepAsCompleted(OnboardingStepUi.howManyWords),
         );
       },
+      isItemSelected: (item) => bloc.state.numOfWords == item,
       onPop: () {
         OnboardingPopScreenHandler.onPop(context, bloc);
       },
@@ -31,7 +32,6 @@ class HowManyWordsOnboardingScreen extends StatelessWidget {
       },
       title: context.localizations.howManyWordsDoYouWantToLearnPerWeek,
       subtitle: context.localizations.youCanAlwaysChangeYourGoalLater,
-      selectedItem: bloc.state.numOfWords,
       items: OnboardingNumOfWords.values,
     );
   }

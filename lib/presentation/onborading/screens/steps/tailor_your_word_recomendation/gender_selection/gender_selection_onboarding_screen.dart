@@ -25,6 +25,7 @@ class GenderSelectionOnboardingScreen extends StatelessWidget {
           ),
         );
       },
+      isItemSelected: (item) => bloc.state.gender == item,
       onSelectedAnimationCompleted: () {
         bloc.add(const OnboardingEvent.goToNextStep());
       },
@@ -33,7 +34,6 @@ class GenderSelectionOnboardingScreen extends StatelessWidget {
       },
       title: context.localizations.whichOptionRepresentsYouBest,
       subtitle: context.localizations.selectAnOptionToContinue,
-      selectedItem: bloc.state.gender,
       items: OnboardingGender.values,
     );
   }

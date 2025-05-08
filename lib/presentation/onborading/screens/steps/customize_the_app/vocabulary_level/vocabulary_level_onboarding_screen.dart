@@ -25,6 +25,7 @@ class VocabularyLevelOnboardingScreen extends StatelessWidget {
           ),
         );
       },
+      isItemSelected: (item) => bloc.state.vocabularyLevel == item,
       onSelectedAnimationCompleted: () {
         bloc.add(const OnboardingEvent.goToNextStep());
       },
@@ -33,7 +34,6 @@ class VocabularyLevelOnboardingScreen extends StatelessWidget {
       },
       title: context.localizations.whatsYourVocabularyLevel,
       subtitle: context.localizations.selectAnOptionToContinue,
-      selectedItem: bloc.state.vocabularyLevel,
       items: OnboardingVocabularyLevel.values,
     );
   }
