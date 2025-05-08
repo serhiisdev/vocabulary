@@ -224,6 +224,9 @@ class _CheckIcon extends StatelessWidget {
   final double opacity;
   final double unselectedBorderWidth;
   final Color color;
+
+  /// If true, the circle border will be shown when the checkbox is unselected.
+  /// Otherwise when unselected, nothing will be drawn at all at the place of the check icon.
   final bool showCheckIconBorderWhenUnselected;
   const _CheckIcon({
     required this.opacity,
