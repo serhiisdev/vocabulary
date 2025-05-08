@@ -11,8 +11,8 @@ sealed class OnboardingState with _$OnboardingState {
     OnboardingHowDidYouHearAboutUs? howDidYouHearAboutUs,
     OnboardingNumOfWords? numOfWords,
     OnboardingVocabularyLevel? vocabularyLevel,
-    OnboardingGoalPurpose? goalPurpose,
-    OnboardingTopics? topics,
+    @Default({}) Set<OnboardingGoalPurpose> goalsPurpose,
+    @Default({}) Set<OnboardingTopics> topics,
     OnboardingGoalDays? goalDays,
     OnboardingGender? gender,
     OnboardingHowOldAreYou? howOldAreYou,
@@ -20,12 +20,12 @@ sealed class OnboardingState with _$OnboardingState {
   }) = _OnboardingState;
 
   static OnboardingState get initial => OnboardingState(
-        status: const BlocStatus.initial(),
-        isOnboardingCompleted: false,
-        steps: OnboardingStepUi.values.toSet(),
-        completedSteps: {},
-        currentStepIndex: 0,
-      );
+    status: const BlocStatus.initial(),
+    isOnboardingCompleted: false,
+    steps: OnboardingStepUi.values.toSet(),
+    completedSteps: {},
+    currentStepIndex: 0,
+  );
 }
 
 extension OnboardingStateX on OnboardingState {

@@ -23,6 +23,7 @@ class GoalDaysOnboardingScreen extends StatelessWidget {
           const OnboardingEvent.markStepAsCompleted(OnboardingStepUi.goalDays),
         );
       },
+      isItemSelected: (item) => bloc.state.goalDays == item,
       onSelectedAnimationCompleted: () {
         bloc.add(const OnboardingEvent.goToNextStep());
       },
@@ -32,7 +33,6 @@ class GoalDaysOnboardingScreen extends StatelessWidget {
       title: context.localizations.whatGoalDoYouWantToStartWith,
       subtitle:
           context.localizations.beingConsistentIsKeyToExpandingYourVocabulary,
-      selectedItem: bloc.state.goalDays,
       items: OnboardingGoalDays.values,
     );
   }

@@ -169,19 +169,21 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     _GoalPurposeSelected event,
     Emitter<OnboardingState> emit,
   ) {
-    if (state.goalPurpose == event.item) {
-      add(const OnboardingEvent.goToNextStep());
-      return;
-    }
-    emit(state.copyWith(goalPurpose: event.item));
+    final currentGoalsPurpose = state.goalsPurpose.toSet();
+    currentGoalsPurpose.contains(event.item)
+        ? currentGoalsPurpose.remove(event.item)
+        : currentGoalsPurpose.add(event.item);
+
+    emit(state.copyWith(goalsPurpose: currentGoalsPurpose));
   }
 
   void _onTopicsSelected(_TopicsSelected event, Emitter<OnboardingState> emit) {
-    if (state.topics == event.item) {
-      add(const OnboardingEvent.goToNextStep());
-      return;
-    }
-    emit(state.copyWith(topics: event.item));
+    final currentTopics = state.topics.toSet();
+    currentTopics.contains(event.item)
+        ? currentTopics.remove(event.item)
+        : currentTopics.add(event.item);
+        
+    emit(state.copyWith(topics: currentTopics));
   }
 
   void _onGoalDaysSelected(
