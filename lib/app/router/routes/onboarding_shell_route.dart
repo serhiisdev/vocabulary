@@ -17,8 +17,11 @@ abstract class OnboardingShellRoute {
       navigatorKey: onboardingNavigatorKey,
       builder: (context, state, child) {
         return BlocProvider(
-          create: (_) => getIt<OnboardingBloc>()..add(const OnboardingEvent.started()),
-          child:  child,
+          create:
+              (_) =>
+                  getIt<OnboardingBloc>()..add(const OnboardingEvent.started()),
+          lazy: false,
+          child: child,
         );
       },
       routes: [
@@ -30,9 +33,11 @@ abstract class OnboardingShellRoute {
         GoRoute(
           path: '/${Screen.onboardingSteps}',
           name: Screen.onboardingSteps,
-          pageBuilder: (context, state) =>  GoTransition(
-            child: const OnboardingStepsScreen(),
-          ).withFade.withBackGesture,
+          pageBuilder:
+              (context, state) =>
+                  GoTransition(
+                    child: const OnboardingStepsScreen(),
+                  ).withFade.withBackGesture,
         ),
       ],
     );

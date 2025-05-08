@@ -43,7 +43,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     on<_HowDidYouHearAboutUsSelected>(_onHowDidYouHearAboutUsSelected);
     on<_NumOfWordsSelected>(_onNumOfWordsSelected);
     on<_VocabularyLevelSelected>(_onVocabularyLevelSelected);
-    on<_SpecificGoalSelected>(_onSpecificGoalSelected);
+    on<_GoalPurposeSelected>(_onGoalPurposeSelected);
     on<_TopicsSelected>(_onTopicsSelected);
     on<_GoalDaysSelected>(_onGoalDaysSelected);
     on<_GenderSelected>(_onGenderSelected);
@@ -165,15 +165,15 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     emit(state.copyWith(vocabularyLevel: event.item));
   }
 
-  void _onSpecificGoalSelected(
-    _SpecificGoalSelected event,
+  void _onGoalPurposeSelected(
+    _GoalPurposeSelected event,
     Emitter<OnboardingState> emit,
   ) {
-    if (state.specificGoal == event.item) {
+    if (state.goalPurpose == event.item) {
       add(const OnboardingEvent.goToNextStep());
       return;
     }
-    emit(state.copyWith(specificGoal: event.item));
+    emit(state.copyWith(goalPurpose: event.item));
   }
 
   void _onTopicsSelected(_TopicsSelected event, Emitter<OnboardingState> emit) {

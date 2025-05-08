@@ -15,7 +15,9 @@ class WelcomeOnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const buttonHeight = 48.0;
     const buttonVerticalPadding = 24.0;
-    const bodyBottomPadding = buttonHeight + (buttonVerticalPadding * 2) + 16;
+    final buttonBottomSafeArea = MediaQuery.paddingOf(context).bottom;
+    final bodyBottomPadding =
+        buttonHeight + (buttonVerticalPadding * 2) + buttonBottomSafeArea + 16;
 
     final floatingActionButton = SizedBox(
       width: double.infinity,
@@ -53,15 +55,15 @@ class WelcomeOnboardingScreen extends StatelessWidget {
     return ScaffoldWithPinnedImage(
       assetImagePath: Assets.images.letters.path,
       imageHeightFactor: 0.5,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(
+      floatingActionButton: SafeArea(
+        minimum: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: buttonVerticalPadding,
         ),
         child: floatingActionButton,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 26, bottom: bodyBottomPadding),
+        padding: EdgeInsets.only(top: 26, bottom: bodyBottomPadding),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

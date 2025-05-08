@@ -5,6 +5,7 @@ import 'package:vocabulary/app/core/extensions/build_context_ext.dart';
 import 'package:vocabulary/app/router/screen.dart';
 import 'package:vocabulary/core/models/bloc_status/bloc_status.dart';
 import 'package:vocabulary/presentation/onborading/bloc/onboarding_bloc.dart';
+import 'package:vocabulary/presentation/onborading/config/onboarding_pop_screen_handler.dart';
 
 class OnboardingFlowWrapper extends StatelessWidget {
   final PageController pageController;
@@ -29,7 +30,7 @@ class OnboardingFlowWrapper extends StatelessWidget {
     pageController.animateToPage(
       currentStepIndex,
       duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
+      curve: Curves.easeInOutCubic,
     );
   }
 
@@ -38,8 +39,8 @@ class OnboardingFlowWrapper extends StatelessWidget {
     context.showErrorSnackBar();
   }
 
-  void _handlePop(OnboardingBloc bloc) {
-    bloc.add(OnboardingEvent.goToPreviousStep());
+  void _handlePop(BuildContext context, OnboardingBloc bloc) {
+    OnboardingPopScreenHandler.onPop(context, bloc);
   }
 
   @override
@@ -78,7 +79,7 @@ class OnboardingFlowWrapper extends StatelessWidget {
             canPop: !state.hasPreviousStep,
             onPopInvokedWithResult: (didPop, result) {
               if (didPop) return;
-              _handlePop(bloc);
+              _handlePop(context, bloc);
             },
             child: childResolved,
           );
