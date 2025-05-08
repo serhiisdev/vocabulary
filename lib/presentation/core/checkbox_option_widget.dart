@@ -11,6 +11,7 @@ class CheckboxOptionWidget extends StatefulWidget {
   final bool isSelected;
   final String text;
   final TextStyle textStyle;
+  final bool showCheckIconBorderWhenUnselected;
   final Color checkIconColor;
   final Color selectedBorderColor;
   final Color unselectedBorderColor;
@@ -21,14 +22,17 @@ class CheckboxOptionWidget extends StatefulWidget {
     super.key,
     required this.onTap,
     required this.onSelectedAnimationCompleted,
-    this.containerPadding = const EdgeInsets.symmetric(
-      horizontal: 24,
-      vertical: 12,
+    this.containerPadding = const EdgeInsets.only(
+      left: 24,
+      right: 12,
+      top: 12,
+      bottom: 12,
     ),
     this.borderRadius = 26,
     required this.isSelected,
     required this.text,
     required this.textStyle,
+    this.showCheckIconBorderWhenUnselected = false,
     required this.checkIconColor,
     required this.selectedBorderColor,
     required this.unselectedBorderColor,
@@ -135,6 +139,9 @@ class _CheckboxOptionWidgetState extends State<CheckboxOptionWidget>
       text: widget.text,
       textStyle: widget.textStyle,
       checkIconColor: widget.checkIconColor,
+      showCheckIconBorderWhenUnselected:
+          widget.showCheckIconBorderWhenUnselected,
+      unselectedBorderWidth: widget.unselectedBorderWidth,
       borderWidth: _borderWidth,
       borderColor: _borderColor,
       checkboxOpacity: _checkboxOpacity,
@@ -149,6 +156,8 @@ class _AnimatedWidget extends AnimatedWidget {
   final String text;
   final TextStyle textStyle;
   final Color checkIconColor;
+  final bool showCheckIconBorderWhenUnselected;
+  final double unselectedBorderWidth;
   final Animation<double> borderWidth;
   final Animation<Color?> borderColor;
   final Animation<double> checkboxOpacity;
@@ -160,6 +169,8 @@ class _AnimatedWidget extends AnimatedWidget {
     required this.text,
     required this.textStyle,
     required this.checkIconColor,
+    required this.showCheckIconBorderWhenUnselected,
+    required this.unselectedBorderWidth,
     required this.borderWidth,
     required this.borderColor,
     required this.checkboxOpacity,
@@ -178,9 +189,11 @@ class _AnimatedWidget extends AnimatedWidget {
       children: [
         Expanded(child: Text(text, style: textStyle)),
         SizedBox(width: 8),
-        Opacity(
+        _CheckIcon(
           opacity: checkboxOpacity.value,
-          child: Icon(Icons.check_circle, size: 28, color: checkIconColor),
+          color: checkIconColor,
+          showCheckIconBorderWhenUnselected: showCheckIconBorderWhenUnselected,
+          unselectedBorderWidth: unselectedBorderWidth,
         ),
       ],
     );
@@ -203,6 +216,59 @@ class _AnimatedWidget extends AnimatedWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(borderRadius),
       child: child,
+    );
+  }
+}
+
+class _CheckIcon extends StatelessWidget {
+  final double opacity;
+  final double unselectedBorderWidth;
+  final Color color;
+  final bool showCheckIconBorderWhenUnselected;
+  const _CheckIcon({
+    required this.opacity,
+    required this.unselectedBorderWidth,
+    required this.color,
+    required this.showCheckIconBorderWhenUnselected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const checkIconSize = 24.0;
+    if (showCheckIconBorderWhenUnselected) {
+      return Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            width: checkIconSize,
+            height: checkIconSize,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: color,
+                width: unselectedBorderWidth,
+                strokeAlign: BorderSide.strokeAlignInside,
+              ),
+            ),
+          ),
+          Opacity(
+            opacity: opacity,
+            child: Icon(
+              Icons.check_circle,
+
+              /// We add 4 here to make icon size equal to the container size.
+              /// As this icon has built-in padding, it appears smaller than the container below it when
+              /// specifying just [checkIconSize]. To make them the same size, this workaround is needed.
+              size: checkIconSize + 4,
+              color: color,
+            ),
+          ),
+        ],
+      );
+    }
+    return Opacity(
+      opacity: opacity,
+      child: Icon(Icons.check_circle, size: checkIconSize, color: color),
     );
   }
 }

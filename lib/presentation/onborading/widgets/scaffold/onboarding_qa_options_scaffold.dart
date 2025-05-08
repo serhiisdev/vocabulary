@@ -54,6 +54,7 @@ class OnboardingQaOptionsScaffold<T extends Localized> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isIos = Theme.of(context).platform == TargetPlatform.iOS;
     const buttonHeight = 48.0;
     const buttonVerticalPadding = 24.0;
     final buttonBottomSafeArea = MediaQuery.paddingOf(context).bottom;
@@ -120,12 +121,15 @@ class OnboardingQaOptionsScaffold<T extends Localized> extends StatelessWidget {
           isSelected: isItemSelected(item),
           text: item.title(context),
           textStyle: context.theme.appTypography.bodyMedium,
-          checkIconColor: context.theme.appColors.white,
-          selectedBorderColor: context.theme.appColors.white,
+          showCheckIconBorderWhenUnselected: isIos,
+          checkIconColor: context.theme.appColors.white.withValues(alpha: 0.8),
+          selectedBorderColor: context.theme.appColors.white.withValues(
+            alpha: 0.8,
+          ),
           unselectedBorderColor: context.theme.appColors.white.withValues(
             alpha: 0.5,
           ),
-          selectedBorderWidth: 1.5,
+          selectedBorderWidth: 2,
           unselectedBorderWidth: 1,
         );
       },
