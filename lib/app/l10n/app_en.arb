@@ -31,5 +31,6 @@
   "setUpVocabularyToHelpYouAchieveYourGoals": "Set up Vocabulary to help you achieve your goals",
   "doYouHaveASpecificGoalInMind": "Do you have a specific goal in mind?",
   "whichTopicsAreYouInterestedIn": "Which topics are you interested in?",
-  "whatGoalDoYouWantToStartWith": "What goal do you want to start with?"
+  "whatGoalDoYouWantToStartWith": "What goal do you want to start with?",
+  "definitionLabel": "n."
 }

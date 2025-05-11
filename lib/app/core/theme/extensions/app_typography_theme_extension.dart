@@ -9,6 +9,7 @@ class AppTypographyThemeExtension
   final TextStyle titleSmall;
   final TextStyle bodyLargeBold;
   final TextStyle bodyMedium;
+  final TextStyle bodySmall;
   final TextStyle labelLargeBold;
   final TextStyle labelSmall;
 
@@ -19,6 +20,7 @@ class AppTypographyThemeExtension
     required this.titleSmall,
     required this.bodyLargeBold,
     required this.bodyMedium,
+    required this.bodySmall,
     required this.labelLargeBold,
     required this.labelSmall,
   });
@@ -31,6 +33,7 @@ class AppTypographyThemeExtension
     TextStyle? titleSmall,
     TextStyle? bodyLargeBold,
     TextStyle? bodyMedium,
+    TextStyle? bodySmall,
     TextStyle? labelLargeBold,
     TextStyle? labelSmall,
   }) {
@@ -41,6 +44,7 @@ class AppTypographyThemeExtension
       titleSmall: titleSmall ?? this.titleSmall,
       bodyLargeBold: bodyLargeBold ?? this.bodyLargeBold,
       bodyMedium: bodyMedium ?? this.bodyMedium,
+      bodySmall: bodySmall ?? this.bodySmall,
       labelLargeBold: labelLargeBold ?? this.labelLargeBold,
       labelSmall: labelSmall ?? this.labelSmall,
     );
@@ -59,6 +63,7 @@ class AppTypographyThemeExtension
       titleSmall: titleSmall.lerp(other.titleSmall, t),
       bodyLargeBold: bodyLargeBold.lerp(other.bodyLargeBold, t),
       bodyMedium: bodyMedium.lerp(other.bodyMedium, t),
+      bodySmall: bodySmall.lerp(other.bodySmall, t),
       labelLargeBold: labelLargeBold.lerp(other.labelLargeBold, t),
       labelSmall: labelSmall.lerp(other.labelSmall, t),
     );

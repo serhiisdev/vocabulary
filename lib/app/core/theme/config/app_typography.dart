@@ -18,8 +18,15 @@ abstract class AppTypography {
   static final bodyLargeBold = GoogleFonts.poppins(
     textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
   );
+
+  static final bodyLarge = GoogleFonts.poppins(
+    textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+  );
   static final bodyMedium = GoogleFonts.poppins(
-    textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+    textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+  );
+  static final bodySmall = GoogleFonts.poppins(
+    textStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
   );
   static final labelLargeBold = GoogleFonts.poppins(
     textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),

@@ -5,7 +5,9 @@ class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
   final Color white;
   final Color black;
   final Color text;
+  final Color textV2;
   final Color background;
+  final Color backgroundV2;
   final Color buttonBackground;
   final Color buttonForeground;
   final Color shadowColor;
@@ -15,7 +17,9 @@ class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
     required this.white,
     required this.black,
     required this.text,
+    required this.textV2,
     required this.background,
+    required this.backgroundV2,
     required this.buttonBackground,
     required this.buttonForeground,
     required this.shadowColor,
@@ -27,7 +31,9 @@ class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
     Color? white,
     Color? black,
     Color? text,
+    Color? textV2,
     Color? background,
+    Color? backgroundV2,
     Color? buttonBackground,
     Color? buttonForeground,
     Color? shadowColor,
@@ -37,7 +43,9 @@ class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
       white: white ?? this.white,
       black: black ?? this.black,
       text: text ?? this.text,
+      textV2: textV2 ?? this.textV2,
       background: background ?? this.background,
+      backgroundV2: backgroundV2 ?? this.backgroundV2,
       buttonBackground: buttonBackground ?? this.buttonBackground,
       buttonForeground: buttonForeground ?? this.buttonForeground,
       shadowColor: shadowColor ?? this.shadowColor,
@@ -55,7 +63,9 @@ class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
       white: white.lerp(other.white, t),
       black: black.lerp(other.black, t),
       text: text.lerp(other.text, t),
+      textV2: textV2.lerp(other.textV2, t),
       background: background.lerp(other.background, t),
+      backgroundV2: backgroundV2.lerp(other.backgroundV2, t),
       buttonBackground: buttonBackground.lerp(other.buttonBackground, t),
       buttonForeground: buttonForeground.lerp(other.buttonForeground, t),
       shadowColor: shadowColor.lerp(other.shadowColor, t),
