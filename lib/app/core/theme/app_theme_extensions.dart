@@ -8,7 +8,9 @@ abstract class AppThemeExtensions {
     white: AppColors.white,
     black: AppColors.black,
     text: AppColors.text,
+    textV2: AppColors.textV2,
     background: AppColors.background,
+    backgroundV2: AppColors.backgroundV2,
     buttonBackground: AppColors.buttonBackground,
     buttonForeground: AppColors.buttonForeground,
     shadowColor: AppColors.black,
@@ -22,6 +24,7 @@ abstract class AppThemeExtensions {
         titleSmall: AppTypography.titleSmall,
         bodyLargeBold: AppTypography.bodyLargeBold,
         bodyMedium: AppTypography.bodyMedium,
+        bodySmall: AppTypography.bodySmall,
         labelLargeBold: AppTypography.labelLargeBold,
         labelSmall: AppTypography.labelSmall,
       );
