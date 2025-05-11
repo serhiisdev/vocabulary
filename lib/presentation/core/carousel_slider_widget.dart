@@ -19,7 +19,11 @@ class CarouselSliderWidgetState extends State<CarouselSliderWidget> {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     return CarouselSlider.builder(
-      options: CarouselOptions(scrollDirection: Axis.vertical, height: height),
+      options: CarouselOptions(
+        scrollDirection: Axis.vertical,
+        height: height,
+        viewportFraction: 1.0,
+      ),
       itemCount: widget.itemCount,
       itemBuilder: widget.itemBuilder,
     );
