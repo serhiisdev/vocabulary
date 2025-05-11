@@ -14,13 +14,20 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:logger/logger.dart' as _i974;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 import 'package:vocabulary/app/di/get_it_module.dart' as _i411;
+import 'package:vocabulary/app/services/app_startup_manager.dart' as _i859;
 import 'package:vocabulary/data/apis/onboarding/onboarding_dao.dart' as _i276;
 import 'package:vocabulary/data/apis/words/words_api.dart' as _i1015;
+import 'package:vocabulary/data/repositories/app_preferences/app_preferences_repository.dart'
+    as _i491;
 import 'package:vocabulary/data/repositories/onboarding/onboarding_repository.dart'
     as _i947;
 import 'package:vocabulary/data/repositories/words/words_repository.dart'
     as _i530;
 import 'package:vocabulary/domain/mappers/word/word_model_mapper.dart' as _i703;
+import 'package:vocabulary/domain/use_cases/app_preferences/get_is_first_app_launch_use_case.dart'
+    as _i76;
+import 'package:vocabulary/domain/use_cases/app_preferences/increment_app_launch_count_up_to_limit_use_case.dart'
+    as _i288;
 import 'package:vocabulary/domain/use_cases/onboarding/get_completed_oboarding_steps_use_case.dart'
     as _i242;
 import 'package:vocabulary/domain/use_cases/onboarding/get_initial_oboarding_step_use_case.dart'
@@ -47,10 +54,10 @@ extension GetItInjectableX on _i174.GetIt {
   }) async {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final getItModule = _$GetItModule();
+    gh.factory<_i703.WordModelMapper>(() => const _i703.WordModelMapper());
     gh.factory<_i422.GetInitialOnboardingStepUseCase>(
       () => _i422.GetInitialOnboardingStepUseCase(),
     );
-    gh.factory<_i703.WordModelMapper>(() => const _i703.WordModelMapper());
     gh.factory<_i72.WordUiModelMapper>(() => const _i72.WordUiModelMapper());
     await gh.singletonAsync<_i460.SharedPreferencesWithCache>(
       () => getItModule.sharedPreferencesWithCache,
@@ -67,6 +74,12 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.factory<_i1015.WordsApi>(() => const _i1015.WordsApiImpl());
+    gh.factory<_i491.AppPreferencesRepository>(
+      () => _i491.AppPreferencesRepositoryImpl(
+        gh<_i460.SharedPreferencesWithCache>(),
+        gh<_i974.Logger>(),
+      ),
+    );
     gh.factory<_i671.SaveCompletedOnboardingStepUseCase>(
       () => _i671.SaveCompletedOnboardingStepUseCase(
         gh<_i947.OnboardingRepository>(),
@@ -92,16 +105,26 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i398.GetWordsUseCase>(
       () => _i398.GetWordsUseCase(gh<_i530.WordsRepository>()),
     );
-    gh.factory<_i46.SplashBloc>(
-      () => _i46.SplashBloc(
-        gh<_i896.GetIsOnboardingCompletedUseCase>(),
-        gh<_i974.Logger>(),
+    gh.factory<_i288.IncrementAppLaunchCountUpToLimitUseCase>(
+      () => _i288.IncrementAppLaunchCountUpToLimitUseCase(
+        gh<_i491.AppPreferencesRepository>(),
       ),
+    );
+    gh.factory<_i76.GetIsFirstAppLaunchUseCase>(
+      () =>
+          _i76.GetIsFirstAppLaunchUseCase(gh<_i491.AppPreferencesRepository>()),
     );
     gh.factory<_i368.WordsListBloc>(
       () => _i368.WordsListBloc(
         gh<_i398.GetWordsUseCase>(),
+        gh<_i76.GetIsFirstAppLaunchUseCase>(),
         gh<_i72.WordUiModelMapper>(),
+        gh<_i974.Logger>(),
+      ),
+    );
+    gh.factory<_i46.SplashBloc>(
+      () => _i46.SplashBloc(
+        gh<_i896.GetIsOnboardingCompletedUseCase>(),
         gh<_i974.Logger>(),
       ),
     );
@@ -113,6 +136,11 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i422.GetInitialOnboardingStepUseCase>(),
         gh<_i671.SaveCompletedOnboardingStepUseCase>(),
         gh<_i974.Logger>(),
+      ),
+    );
+    gh.factory<_i859.AppStartupManager>(
+      () => _i859.AppStartupManager(
+        gh<_i288.IncrementAppLaunchCountUpToLimitUseCase>(),
       ),
     );
     return this;

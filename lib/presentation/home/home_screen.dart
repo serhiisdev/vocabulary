@@ -13,7 +13,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<WordsListBloc>()..add(const WordsListEvent.started()),
+      create:
+          (_) => getIt<WordsListBloc>()..add(const WordsListEvent.started()),
       child: const _HomeScreenView(),
     );
   }
@@ -30,14 +31,18 @@ class _HomeScreenView extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           if (state.words.isEmpty) {
-            if (state.status.isInitial || state.status.isLoading) {
+            if (state.wordsLoadingStatus.isInitial ||
+                state.wordsLoadingStatus.isLoading) {
               return const Center(child: CircularProgressIndicator());
             }
-            if (state.status.isError) {
+            if (state.wordsLoadingStatus.isError) {
               return const Center(child: Text('Error'));
             }
           }
-          return WordsListWidget(words: state.words);
+          return WordsListWidget(
+            showWelcomeWidget: state.isFirstAppLaunch,
+            words: state.words,
+          );
         },
       ),
     );
