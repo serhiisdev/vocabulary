@@ -15,6 +15,7 @@ class CarouselSliderWidget extends StatefulWidget {
 }
 
 class CarouselSliderWidgetState extends State<CarouselSliderWidget> {
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;

@@ -77,7 +77,7 @@ String toString() {
 /// @nodoc
 mixin _$WordsListState {
 
- BlocStatus get status; List<WordUiModel> get words;
+ BlocStatus get wordsLoadingStatus; List<WordUiModel> get words; bool get isFirstAppLaunch;
 /// Create a copy of WordsListState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -88,16 +88,16 @@ $WordsListStateCopyWith<WordsListState> get copyWith => _$WordsListStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is WordsListState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.words, words));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WordsListState&&(identical(other.wordsLoadingStatus, wordsLoadingStatus) || other.wordsLoadingStatus == wordsLoadingStatus)&&const DeepCollectionEquality().equals(other.words, words)&&(identical(other.isFirstAppLaunch, isFirstAppLaunch) || other.isFirstAppLaunch == isFirstAppLaunch));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(words));
+int get hashCode => Object.hash(runtimeType,wordsLoadingStatus,const DeepCollectionEquality().hash(words),isFirstAppLaunch);
 
 @override
 String toString() {
-  return 'WordsListState(status: $status, words: $words)';
+  return 'WordsListState(wordsLoadingStatus: $wordsLoadingStatus, words: $words, isFirstAppLaunch: $isFirstAppLaunch)';
 }
 
 
@@ -108,11 +108,11 @@ abstract mixin class $WordsListStateCopyWith<$Res>  {
   factory $WordsListStateCopyWith(WordsListState value, $Res Function(WordsListState) _then) = _$WordsListStateCopyWithImpl;
 @useResult
 $Res call({
- BlocStatus status, List<WordUiModel> words
+ BlocStatus wordsLoadingStatus, List<WordUiModel> words, bool isFirstAppLaunch
 });
 
 
-$BlocStatusCopyWith<dynamic, $Res> get status;
+$BlocStatusCopyWith<dynamic, $Res> get wordsLoadingStatus;
 
 }
 /// @nodoc
@@ -125,21 +125,22 @@ class _$WordsListStateCopyWithImpl<$Res>
 
 /// Create a copy of WordsListState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? words = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? wordsLoadingStatus = null,Object? words = null,Object? isFirstAppLaunch = null,}) {
   return _then(_self.copyWith(
-status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+wordsLoadingStatus: null == wordsLoadingStatus ? _self.wordsLoadingStatus : wordsLoadingStatus // ignore: cast_nullable_to_non_nullable
 as BlocStatus,words: null == words ? _self.words : words // ignore: cast_nullable_to_non_nullable
-as List<WordUiModel>,
+as List<WordUiModel>,isFirstAppLaunch: null == isFirstAppLaunch ? _self.isFirstAppLaunch : isFirstAppLaunch // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 /// Create a copy of WordsListState
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$BlocStatusCopyWith<dynamic, $Res> get status {
+$BlocStatusCopyWith<dynamic, $Res> get wordsLoadingStatus {
   
-  return $BlocStatusCopyWith<dynamic, $Res>(_self.status, (value) {
-    return _then(_self.copyWith(status: value));
+  return $BlocStatusCopyWith<dynamic, $Res>(_self.wordsLoadingStatus, (value) {
+    return _then(_self.copyWith(wordsLoadingStatus: value));
   });
 }
 }
@@ -149,10 +150,10 @@ $BlocStatusCopyWith<dynamic, $Res> get status {
 
 
 class _WordsListState implements WordsListState {
-  const _WordsListState({this.status = const BlocStatus.initial(), final  List<WordUiModel> words = const []}): _words = words;
+  const _WordsListState({this.wordsLoadingStatus = const BlocStatus.initial(), final  List<WordUiModel> words = const [], required this.isFirstAppLaunch}): _words = words;
   
 
-@override@JsonKey() final  BlocStatus status;
+@override@JsonKey() final  BlocStatus wordsLoadingStatus;
  final  List<WordUiModel> _words;
 @override@JsonKey() List<WordUiModel> get words {
   if (_words is EqualUnmodifiableListView) return _words;
@@ -160,6 +161,7 @@ class _WordsListState implements WordsListState {
   return EqualUnmodifiableListView(_words);
 }
 
+@override final  bool isFirstAppLaunch;
 
 /// Create a copy of WordsListState
 /// with the given fields replaced by the non-null parameter values.
@@ -171,16 +173,16 @@ _$WordsListStateCopyWith<_WordsListState> get copyWith => __$WordsListStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WordsListState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._words, _words));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WordsListState&&(identical(other.wordsLoadingStatus, wordsLoadingStatus) || other.wordsLoadingStatus == wordsLoadingStatus)&&const DeepCollectionEquality().equals(other._words, _words)&&(identical(other.isFirstAppLaunch, isFirstAppLaunch) || other.isFirstAppLaunch == isFirstAppLaunch));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_words));
+int get hashCode => Object.hash(runtimeType,wordsLoadingStatus,const DeepCollectionEquality().hash(_words),isFirstAppLaunch);
 
 @override
 String toString() {
-  return 'WordsListState(status: $status, words: $words)';
+  return 'WordsListState(wordsLoadingStatus: $wordsLoadingStatus, words: $words, isFirstAppLaunch: $isFirstAppLaunch)';
 }
 
 
@@ -191,11 +193,11 @@ abstract mixin class _$WordsListStateCopyWith<$Res> implements $WordsListStateCo
   factory _$WordsListStateCopyWith(_WordsListState value, $Res Function(_WordsListState) _then) = __$WordsListStateCopyWithImpl;
 @override @useResult
 $Res call({
- BlocStatus status, List<WordUiModel> words
+ BlocStatus wordsLoadingStatus, List<WordUiModel> words, bool isFirstAppLaunch
 });
 
 
-@override $BlocStatusCopyWith<dynamic, $Res> get status;
+@override $BlocStatusCopyWith<dynamic, $Res> get wordsLoadingStatus;
 
 }
 /// @nodoc
@@ -208,11 +210,12 @@ class __$WordsListStateCopyWithImpl<$Res>
 
 /// Create a copy of WordsListState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? words = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? wordsLoadingStatus = null,Object? words = null,Object? isFirstAppLaunch = null,}) {
   return _then(_WordsListState(
-status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+wordsLoadingStatus: null == wordsLoadingStatus ? _self.wordsLoadingStatus : wordsLoadingStatus // ignore: cast_nullable_to_non_nullable
 as BlocStatus,words: null == words ? _self._words : words // ignore: cast_nullable_to_non_nullable
-as List<WordUiModel>,
+as List<WordUiModel>,isFirstAppLaunch: null == isFirstAppLaunch ? _self.isFirstAppLaunch : isFirstAppLaunch // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -220,10 +223,10 @@ as List<WordUiModel>,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$BlocStatusCopyWith<dynamic, $Res> get status {
+$BlocStatusCopyWith<dynamic, $Res> get wordsLoadingStatus {
   
-  return $BlocStatusCopyWith<dynamic, $Res>(_self.status, (value) {
-    return _then(_self.copyWith(status: value));
+  return $BlocStatusCopyWith<dynamic, $Res>(_self.wordsLoadingStatus, (value) {
+    return _then(_self.copyWith(wordsLoadingStatus: value));
   });
 }
 }

@@ -5,18 +5,24 @@ import 'package:vocabulary/presentation/words_list/widgets/components/word_list_
 import 'package:vocabulary/presentation/words_list/widgets/welcome_words_widget.dart';
 
 class WordsListWidget extends StatelessWidget {
+  final bool showWelcomeWidget;
   final List<WordUiModel> words;
-  const WordsListWidget({super.key, required this.words});
+  const WordsListWidget({
+    super.key,
+    required this.showWelcomeWidget,
+    required this.words,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return _WordsListView(words: words);
+    return _WordsListView(showWelcomeWidget: showWelcomeWidget, words: words);
   }
 }
 
 class _WordsListView extends StatefulWidget {
+  final bool showWelcomeWidget;
   final List<WordUiModel> words;
-  const _WordsListView({required this.words});
+  const _WordsListView({required this.showWelcomeWidget, required this.words});
 
   @override
   State<_WordsListView> createState() => _WordsListViewState();
@@ -25,14 +31,19 @@ class _WordsListView extends StatefulWidget {
 class _WordsListViewState extends State<_WordsListView> {
   @override
   Widget build(BuildContext context) {
+    final showWelcomeWidget = widget.showWelcomeWidget;
+    final itemsCount =
+        showWelcomeWidget ? widget.words.length + 1 : widget.words.length;
+
     return CarouselSliderWidget(
-      itemCount: widget.words.length + 1,
+      itemCount: itemsCount,
       itemBuilder: (context, index, ___) {
-        if (index == 0) {
+        if (showWelcomeWidget && index == 0) {
           return const WelcomeWordsWidget();
         }
-        final word = widget.words[index - 1];
-        return WordListItemWidget(word: word);
+        final itemIndex = widget.showWelcomeWidget ? index - 1 : index;
+        final item = widget.words[itemIndex];
+        return WordListItemWidget(key: Key(item.id), word: item);
       },
     );
   }
