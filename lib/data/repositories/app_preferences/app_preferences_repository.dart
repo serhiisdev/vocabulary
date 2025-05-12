@@ -6,7 +6,13 @@ import 'package:vocabulary/data/repositories/app_preferences/config/app_preferen
 
 abstract class AppPreferencesRepository {
   Future<Result<void>> incrementCountOfAppLaunches();
-  int getCountOfAppLaunches();
+
+  /// Returns the saved count of app launches. I.e. the count of app launches that was
+  /// incremented by using [incrementCountOfAppLaunches] method.
+  ///
+  /// Note: as this method returns only the saved count of app launches,
+  /// it might not reflect actual app launches count.
+  int getSavedCountOfAppLaunches();
 }
 
 @Injectable(as: AppPreferencesRepository)
@@ -18,7 +24,7 @@ class AppPreferencesRepositoryImpl extends AppPreferencesRepository {
   @override
   Future<Result<void>> incrementCountOfAppLaunches() async {
     try {
-      final count = getCountOfAppLaunches();
+      final count = getSavedCountOfAppLaunches();
       final newCount = count + 1;
       await _storage.setInt(AppPreferencesKeys.countOfAppLaunches, newCount);
       return const Ok(null);
@@ -32,7 +38,7 @@ class AppPreferencesRepositoryImpl extends AppPreferencesRepository {
   }
 
   @override
-  int getCountOfAppLaunches() {
+  int getSavedCountOfAppLaunches() {
     return _storage.getInt(AppPreferencesKeys.countOfAppLaunches) ?? 0;
   }
 }
