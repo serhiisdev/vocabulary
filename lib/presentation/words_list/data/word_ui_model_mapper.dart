@@ -15,4 +15,14 @@ class WordUiModelMapper {
       example: wordModel.example,
     );
   }
+
+  WordModel mapToWordModel(WordUiModel wordUiModel) {
+    return WordModel(
+      id: wordUiModel.id,
+      word: wordUiModel.word,
+      transcription: wordUiModel.transcription,
+      definition: wordUiModel.definition,
+      example: wordUiModel.example,
+    );
+  }
 }

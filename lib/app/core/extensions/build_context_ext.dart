@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:vocabulary/app/core/extensions/theme_data_ext.dart';
 import 'package:vocabulary/app/l10n/generated/app_localizations.dart';
 
 extension BuildContextExt on BuildContext {
@@ -10,13 +11,17 @@ extension BuildContextExt on BuildContext {
   Size get screenSize => MediaQuery.sizeOf(this);
  
   void showErrorSnackBar() {
+    final textStyle = theme.appTypography.bodyMedium.copyWith(
+      color: theme.appColors.text,
+    );
+    final backgroundColor = theme.appColors.background;
     ScaffoldMessenger.of(this).showSnackBar(
       SnackBar(
         content: Text(
-          'Something went wrong. Please try again.',
-          style: TextStyle(color: Colors.white),
+          'Something went wrong.',
+          style: textStyle,
         ),
-        backgroundColor: Colors.red[600],
+        backgroundColor: backgroundColor,
         behavior: SnackBarBehavior.floating,
         margin: const EdgeInsets.all(16),
         duration: const Duration(seconds: 3),
