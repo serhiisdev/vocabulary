@@ -30,6 +30,9 @@ sealed class OnboardingState with _$OnboardingState {
 
 extension OnboardingStateX on OnboardingState {
   bool get isCompleted => completedSteps.length == steps.length;
+  bool get isOnboardingPartiallyCompleted =>
+      completedSteps.isNotEmpty && !isCompleted;
+      
   int get nextStepIndex {
     return math.min(steps.length - 1, currentStepIndex + 1);
   }
