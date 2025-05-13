@@ -132,19 +132,28 @@ class _CheckboxOptionWidgetState extends State<CheckboxOptionWidget>
 
   @override
   Widget build(BuildContext context) {
-    return _AnimatedWidget(
+    return Semantics(
+      container: true,
+      button: true,
+      enabled: true,
+      checked: _isSelected,
       onTap: widget.onTap,
-      containerPadding: widget.containerPadding,
-      borderRadius: widget.borderRadius,
-      text: widget.text,
-      textStyle: widget.textStyle,
-      checkIconColor: widget.checkIconColor,
-      showCheckIconBorderWhenUnselected:
-          widget.showCheckIconBorderWhenUnselected,
-      unselectedBorderWidth: widget.unselectedBorderWidth,
-      borderWidth: _borderWidth,
-      borderColor: _borderColor,
-      checkboxOpacity: _checkboxOpacity,
+      label: widget.text,
+      excludeSemantics: true,
+      child: _AnimatedWidget(
+        onTap: widget.onTap,
+        containerPadding: widget.containerPadding,
+        borderRadius: widget.borderRadius,
+        text: widget.text,
+        textStyle: widget.textStyle,
+        checkIconColor: widget.checkIconColor,
+        showCheckIconBorderWhenUnselected:
+            widget.showCheckIconBorderWhenUnselected,
+        unselectedBorderWidth: widget.unselectedBorderWidth,
+        borderWidth: _borderWidth,
+        borderColor: _borderColor,
+        checkboxOpacity: _checkboxOpacity,
+      ),
     );
   }
 }
