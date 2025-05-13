@@ -10,7 +10,25 @@ class SetDefaultAudioSessionUseCase {
 
   Future<void> call() async {
     await _audioSessionRepository.setAudioSession(
-      AudioSessionConfiguration.speech(),
+      AudioSessionConfiguration(
+        avAudioSessionCategory: AVAudioSessionCategory.playback,
+        avAudioSessionCategoryOptions:
+            AVAudioSessionCategoryOptions.interruptSpokenAudioAndMixWithOthers |
+            AVAudioSessionCategoryOptions.duckOthers,
+        avAudioSessionMode: AVAudioSessionMode.voicePrompt,
+        avAudioSessionRouteSharingPolicy:
+            AVAudioSessionRouteSharingPolicy.defaultPolicy,
+        avAudioSessionSetActiveOptions:
+            AVAudioSessionSetActiveOptions.notifyOthersOnDeactivation,
+        androidAudioAttributes: AndroidAudioAttributes(
+          usage: AndroidAudioUsage.assistanceAccessibility,
+          contentType: AndroidAudioContentType.speech,
+          flags: AndroidAudioFlags.none,
+        ),
+        androidAudioFocusGainType:
+            AndroidAudioFocusGainType.gainTransientMayDuck,
+        androidWillPauseWhenDucked: false,
+      ),
     );
   }
 }

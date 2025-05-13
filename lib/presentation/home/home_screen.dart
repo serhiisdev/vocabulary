@@ -62,7 +62,7 @@ class _HomeScreenView extends StatelessWidget {
                 return const Center(child: CircularProgressIndicator());
               }
               if (state.wordsLoadingStatus.isError) {
-                return const Center(child: Text('Error'));
+                return Center(child: Text(context.localizations.error));
               }
             }
             return WordsListWidget(
