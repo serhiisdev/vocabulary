@@ -2,7 +2,13 @@
 
 **Before app launch**
 
-Run this command from project root to generate necessary files:
+Run these commands from project root to generate necessary files:
+
+```bash
+flutter pub get
+```
+
+and
 
 ```bash
 dart run build_runner build --delete-conflicting-outputs

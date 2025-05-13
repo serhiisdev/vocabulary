@@ -48,6 +48,6 @@ app.*.map.json
 /lib/app/l10n/generated
 /lib/app/gen
 /lib/app/di/get_it.config.dart
-*freezed.dart
-*g.dart
+*.freezed.dart
+*.g.dart
 
