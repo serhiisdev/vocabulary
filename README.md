@@ -1,5 +1,13 @@
 # Vocabulary
 
+**Before app launch**
+
+Run this command from project root to generate necessary files:
+
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+
 **This app uses the [ElevenLabs TTS API](https://elevenlabs.io/) to pronounce vocabulary words.**
 
 > An API key is required for text-to-speech functionality to work.  
