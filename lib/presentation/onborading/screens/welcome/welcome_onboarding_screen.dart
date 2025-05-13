@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vocabulary/app/core/extensions/build_context_ext.dart';
 import 'package:vocabulary/app/core/extensions/theme_data_ext.dart';
@@ -7,6 +8,7 @@ import 'package:vocabulary/app/router/screen.dart';
 import 'package:vocabulary/presentation/core/buttons/buttons.dart';
 import 'package:vocabulary/presentation/core/scaffold/scaffold_with_pinned_image.dart';
 import 'package:vocabulary/presentation/core/stars_widget.dart';
+import 'package:vocabulary/presentation/onborading/bloc/onboarding_bloc.dart';
 
 class WelcomeOnboardingScreen extends StatelessWidget {
   const WelcomeOnboardingScreen({super.key});
@@ -19,6 +21,26 @@ class WelcomeOnboardingScreen extends StatelessWidget {
     final bodyBottomPadding =
         buttonHeight + (buttonVerticalPadding * 2) + buttonBottomSafeArea + 16;
 
+    final floatingActionButtonTextWidget =
+        BlocBuilder<OnboardingBloc, OnboardingState>(
+          buildWhen:
+              (a, b) =>
+                  a.isOnboardingPartiallyCompleted !=
+                  b.isOnboardingPartiallyCompleted,
+          builder: (context, state) {
+            final text =
+                state.isOnboardingPartiallyCompleted
+                    ? context.localizations.continueOnboarding
+                    : context.localizations.getStarted;
+            return Text(
+              text,
+              style: context.theme.appTypography.labelLargeBold.copyWith(
+                color: context.theme.appColors.black,
+              ),
+            );
+          },
+        );
+
     final floatingActionButton = SizedBox(
       width: double.infinity,
       height: buttonHeight,
@@ -27,12 +49,7 @@ class WelcomeOnboardingScreen extends StatelessWidget {
         onPressed: () {
           context.pushNamed(Screen.onboardingSteps);
         },
-        child: Text(
-          context.localizations.getStarted,
-          style: context.theme.appTypography.labelLargeBold.copyWith(
-            color: context.theme.appColors.black,
-          ),
-        ),
+        child: floatingActionButtonTextWidget,
       ),
     );
 
