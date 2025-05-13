@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vocabulary/app/core/extensions/build_context_ext.dart';
 import 'package:vocabulary/app/core/extensions/theme_data_ext.dart';
+import 'package:vocabulary/app/services/haptic_feedback_service.dart';
 import 'package:vocabulary/presentation/core/buttons/buttons.dart';
 import 'package:vocabulary/presentation/onborading/widgets/onboarding_app_bar.dart';
 
@@ -16,6 +17,21 @@ class OnboardingIntroScaffold extends StatelessWidget {
     required this.onSkip,
     required this.title,
   });
+
+  void _onPop() {
+    onPop();
+    HapticFeedbackService.lightImpact();
+  }
+
+  void _onContinue() {
+    onContinue();
+    HapticFeedbackService.lightImpact();
+  }
+
+  void _onSkip() {
+    onSkip();
+    HapticFeedbackService.lightImpact();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +51,7 @@ class OnboardingIntroScaffold extends StatelessWidget {
       height: buttonHeight,
       child: Buttons.elevatedButtonWithShadow(
         context,
-        onPressed: onContinue,
+        onPressed: _onContinue,
         child: Text(
           context.localizations.continueLocalized,
           style: context.theme.appTypography.labelLargeBold.copyWith(
@@ -46,7 +62,7 @@ class OnboardingIntroScaffold extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: OnboardingAppBar.build(context, onPop: onPop, onSkip: onSkip),
+      appBar: OnboardingAppBar.build(context, onPop: _onPop, onSkip: _onSkip),
       floatingActionButton: SafeArea(
         minimum: const EdgeInsets.symmetric(
           horizontal: 16,

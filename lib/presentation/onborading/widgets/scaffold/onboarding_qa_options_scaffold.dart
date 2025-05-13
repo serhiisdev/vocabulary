@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vocabulary/app/core/extensions/build_context_ext.dart';
 import 'package:vocabulary/app/core/extensions/theme_data_ext.dart';
+import 'package:vocabulary/app/services/haptic_feedback_service.dart';
 import 'package:vocabulary/presentation/core/buttons/buttons.dart';
 import 'package:vocabulary/presentation/core/checkbox_option_widget.dart';
 import 'package:vocabulary/presentation/onborading/data/onboarding_enums.dart';
@@ -52,6 +53,27 @@ class OnboardingQaOptionsScaffold<T extends Localized> extends StatelessWidget {
     onSelectedAnimationCompleted!();
   }
 
+  void _onPop() {
+    onPop();
+    HapticFeedbackService.lightImpact();
+  }
+
+  void _onContinuePressed() {
+    if (onContinue == null) return;
+    onContinue!();
+    HapticFeedbackService.lightImpact();
+  }
+
+  void _onSkip() {
+    onSkip();
+    HapticFeedbackService.lightImpact();
+  }
+
+  void _onOptionTap(T item) {
+    onSelected(item);
+    HapticFeedbackService.lightImpact();
+  }
+
   @override
   Widget build(BuildContext context) {
     final isIos = Theme.of(context).platform == TargetPlatform.iOS;
@@ -69,7 +91,7 @@ class OnboardingQaOptionsScaffold<T extends Localized> extends StatelessWidget {
         height: buttonHeight,
         child: Buttons.elevatedButtonWithShadow(
           context,
-          onPressed: onContinue!,
+          onPressed: _onContinuePressed,
           child: Text(
             context.localizations.continueLocalized,
             style: context.theme.appTypography.labelLargeBold.copyWith(
@@ -111,7 +133,7 @@ class OnboardingQaOptionsScaffold<T extends Localized> extends StatelessWidget {
         final item = items[index];
         return CheckboxOptionWidget(
           key: ValueKey(item),
-          onTap: () => onSelected(item),
+          onTap: () => _onOptionTap(item),
           onSelectedAnimationCompleted:
               onSelectedAnimationCompleted != null
                   ? () {
@@ -140,7 +162,7 @@ class OnboardingQaOptionsScaffold<T extends Localized> extends StatelessWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: OnboardingAppBar.build(context, onPop: onPop, onSkip: onSkip),
+      appBar: OnboardingAppBar.build(context, onPop: _onPop, onSkip: _onSkip),
       floatingActionButton:
           floatingActionButtonWidget != null
               ? SafeArea(
