@@ -8,7 +8,7 @@ class GetIsFirstAppLaunchUseCase {
   GetIsFirstAppLaunchUseCase(this._appPreferencesRepository);
 
   bool call() {
-    final count = _appPreferencesRepository.getCountOfAppLaunches();
+    final count = _appPreferencesRepository.getSavedCountOfAppLaunches();
     return _isFirstAppLaunch(count);
   }
 

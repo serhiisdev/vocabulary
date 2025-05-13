@@ -5,30 +5,46 @@ import 'package:vocabulary/presentation/words_list/widgets/components/word_list_
 import 'package:vocabulary/presentation/words_list/widgets/welcome_words_widget.dart';
 
 class WordsListWidget extends StatelessWidget {
+  final void Function(WordUiModel word) onAnnounceWord;
   final bool showWelcomeWidget;
   final List<WordUiModel> words;
   const WordsListWidget({
     super.key,
+    required this.onAnnounceWord,
     required this.showWelcomeWidget,
     required this.words,
   });
 
   @override
   Widget build(BuildContext context) {
-    return _WordsListView(showWelcomeWidget: showWelcomeWidget, words: words);
+    return _WordsListView(
+            onAnnounceWord: onAnnounceWord,
+      showWelcomeWidget: showWelcomeWidget,
+      words: words,
+    );
   }
 }
 
 class _WordsListView extends StatefulWidget {
+  final void Function(WordUiModel word) onAnnounceWord;
   final bool showWelcomeWidget;
   final List<WordUiModel> words;
-  const _WordsListView({required this.showWelcomeWidget, required this.words});
+  const _WordsListView({
+    required this.onAnnounceWord,
+    required this.showWelcomeWidget,
+    required this.words,
+  });
 
   @override
   State<_WordsListView> createState() => _WordsListViewState();
 }
 
 class _WordsListViewState extends State<_WordsListView> {
+
+  void _onAnnounceWord(WordUiModel word) {
+    widget.onAnnounceWord(word);
+  }
+
   @override
   Widget build(BuildContext context) {
     final showWelcomeWidget = widget.showWelcomeWidget;
@@ -43,7 +59,11 @@ class _WordsListViewState extends State<_WordsListView> {
         }
         final itemIndex = widget.showWelcomeWidget ? index - 1 : index;
         final item = widget.words[itemIndex];
-        return WordListItemWidget(key: Key(item.id), word: item);
+        return WordListItemWidget(
+          key: Key(item.id),
+          onAnnounceWord: () => _onAnnounceWord(item),
+          word: item,
+        );
       },
     );
   }

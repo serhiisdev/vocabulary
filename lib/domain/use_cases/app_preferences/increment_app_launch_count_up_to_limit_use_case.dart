@@ -8,7 +8,7 @@ class IncrementAppLaunchCountUpToLimitUseCase {
   IncrementAppLaunchCountUpToLimitUseCase(this._appPreferencesRepository);
 
   Future<Result<void>> call() async {
-    final count = _appPreferencesRepository.getCountOfAppLaunches();
+    final count = _appPreferencesRepository.getSavedCountOfAppLaunches();
     if (!_shouldIncrementCount(count)) return const Ok(null);
     return await _appPreferencesRepository.incrementCountOfAppLaunches();
   }
