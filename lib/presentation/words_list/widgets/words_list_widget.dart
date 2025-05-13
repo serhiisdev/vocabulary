@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:vocabulary/presentation/core/carousel_slider_widget.dart';
 import 'package:vocabulary/presentation/words_list/data/word_ui_model.dart';
@@ -18,7 +19,7 @@ class WordsListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _WordsListView(
-            onAnnounceWord: onAnnounceWord,
+      onAnnounceWord: onAnnounceWord,
       showWelcomeWidget: showWelcomeWidget,
       words: words,
     );
@@ -40,6 +41,13 @@ class _WordsListView extends StatefulWidget {
 }
 
 class _WordsListViewState extends State<_WordsListView> {
+  late CarouselSliderController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = CarouselSliderController();
+  }
 
   void _onAnnounceWord(WordUiModel word) {
     widget.onAnnounceWord(word);
@@ -51,20 +59,24 @@ class _WordsListViewState extends State<_WordsListView> {
     final itemsCount =
         showWelcomeWidget ? widget.words.length + 1 : widget.words.length;
 
-    return CarouselSliderWidget(
-      itemCount: itemsCount,
-      itemBuilder: (context, index, ___) {
-        if (showWelcomeWidget && index == 0) {
-          return const WelcomeWordsWidget();
-        }
-        final itemIndex = widget.showWelcomeWidget ? index - 1 : index;
-        final item = widget.words[itemIndex];
-        return WordListItemWidget(
-          key: Key(item.id),
-          onAnnounceWord: () => _onAnnounceWord(item),
-          word: item,
-        );
-      },
+    return GestureDetector(
+      onTap: () => _controller.nextPage(),
+      child: CarouselSliderWidget(
+        carouselController: _controller,
+        itemCount: itemsCount,
+        itemBuilder: (context, index, ___) {
+          if (showWelcomeWidget && index == 0) {
+            return const WelcomeWordsWidget();
+          }
+          final itemIndex = widget.showWelcomeWidget ? index - 1 : index;
+          final item = widget.words[itemIndex];
+          return WordListItemWidget(
+            key: Key(item.id),
+            onAnnounceWord: () => _onAnnounceWord(item),
+            word: item,
+          );
+        },
+      ),
     );
   }
 }
