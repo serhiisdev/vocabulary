@@ -79,7 +79,10 @@ class OnboardingIntroScaffold extends StatelessWidget {
             top: 16,
             bottom: bodyBottomPadding,
           ),
-          child: titleWidget,
+          child: Semantics(
+            header: true,
+            child: titleWidget,
+          ),
         ),
       ),
     );

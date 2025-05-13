@@ -21,36 +21,45 @@ class WelcomeOnboardingScreen extends StatelessWidget {
     final bodyBottomPadding =
         buttonHeight + (buttonVerticalPadding * 2) + buttonBottomSafeArea + 16;
 
-    final floatingActionButtonTextWidget =
-        BlocBuilder<OnboardingBloc, OnboardingState>(
-          buildWhen:
-              (a, b) =>
-                  a.isOnboardingPartiallyCompleted !=
-                  b.isOnboardingPartiallyCompleted,
-          builder: (context, state) {
-            final text =
-                state.isOnboardingPartiallyCompleted
-                    ? context.localizations.continueOnboarding
-                    : context.localizations.getStarted;
-            return Text(
-              text,
-              style: context.theme.appTypography.labelLargeBold.copyWith(
-                color: context.theme.appColors.black,
-              ),
-            );
-          },
-        );
+    final floatingActionButton = BlocBuilder<OnboardingBloc, OnboardingState>(
+      buildWhen:
+          (a, b) =>
+              a.isOnboardingPartiallyCompleted !=
+              b.isOnboardingPartiallyCompleted,
+      builder: (context, state) {
+        final text =
+            state.isOnboardingPartiallyCompleted
+                ? context.localizations.continueOnboarding
+                : context.localizations.getStarted;
 
-    final floatingActionButton = SizedBox(
-      width: double.infinity,
-      height: buttonHeight,
-      child: Buttons.elevatedButtonWithShadow(
-        context,
-        onPressed: () {
-          context.pushNamed(Screen.onboardingSteps);
-        },
-        child: floatingActionButtonTextWidget,
-      ),
+        var semanticsValue = text;
+        if (!state.isOnboardingPartiallyCompleted) {
+          semanticsValue += '. ${context.localizations.startOnboarding}';
+        }
+
+        final textWidget = Text(
+          text,
+          style: context.theme.appTypography.labelLargeBold.copyWith(
+            color: context.theme.appColors.black,
+          ),
+        );
+        return Semantics(
+          button: true,
+          value: semanticsValue,
+          excludeSemantics: true,
+          child: SizedBox(
+            width: double.infinity,
+            height: buttonHeight,
+            child: Buttons.elevatedButtonWithShadow(
+              context,
+              onPressed: () {
+                context.pushNamed(Screen.onboardingSteps);
+              },
+              child: textWidget,
+            ),
+          ),
+        );
+      },
     );
 
     final title = Text(
@@ -111,63 +120,73 @@ class _Bottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const rating = '4.8';
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       spacing: 16,
       children: [
         Flexible(
-          child: _TitleWithSubtitle(
-            title: Text(
-              context.localizations.xMillion(350),
-              textAlign: TextAlign.center,
-              style: context.theme.appTypography.labelLargeBold.copyWith(
-                color: context.theme.appColors.text,
-              ),
-            ),
-            subtitle: Text(
-              context.localizations.wordsLearned.toLowerCase(),
-              textAlign: TextAlign.center,
-              style: context.theme.appTypography.labelSmall.copyWith(
-                color: context.theme.appColors.text,
-              ),
-            ),
-          ),
-        ),
-        Flexible(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: MergeSemantics(
             child: _TitleWithSubtitle(
               title: Text(
-                '4.8',
+                context.localizations.xMillion(350),
                 textAlign: TextAlign.center,
-                style: context.theme.appTypography.bodyLargeBold.copyWith(
-                  fontSize: 16,
+                style: context.theme.appTypography.labelLargeBold.copyWith(
                   color: context.theme.appColors.text,
                 ),
               ),
-              subtitle: StarsWidget(
-                count: 5,
-                color: context.theme.appColors.starColor,
-                size: 12,
+              subtitle: Text(
+                context.localizations.wordsLearned.toLowerCase(),
+                textAlign: TextAlign.center,
+                style: context.theme.appTypography.labelSmall.copyWith(
+                  color: context.theme.appColors.text,
+                ),
               ),
             ),
           ),
         ),
         Flexible(
-          child: _TitleWithSubtitle(
-            title: Text(
-              context.localizations.xMillion(10),
-              textAlign: TextAlign.center,
-              style: context.theme.appTypography.labelLargeBold.copyWith(
-                color: context.theme.appColors.text,
+          child: Semantics(
+            container: true,
+            label: '$rating ${context.localizations.rating}',
+            excludeSemantics: true,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: _TitleWithSubtitle(
+                title: Text(
+                  rating,
+                  textAlign: TextAlign.center,
+                  style: context.theme.appTypography.bodyLargeBold.copyWith(
+                    fontSize: 16,
+                    color: context.theme.appColors.text,
+                  ),
+                ),
+                subtitle: StarsWidget(
+                  count: 5,
+                  color: context.theme.appColors.starColor,
+                  size: 12,
+                ),
               ),
             ),
-            subtitle: Text(
-              context.localizations.downloads.toLowerCase(),
-              textAlign: TextAlign.center,
-              style: context.theme.appTypography.labelSmall.copyWith(
-                color: context.theme.appColors.text,
+          ),
+        ),
+        Flexible(
+          child: MergeSemantics(
+            child: _TitleWithSubtitle(
+              title: Text(
+                context.localizations.xMillion(10),
+                textAlign: TextAlign.center,
+                style: context.theme.appTypography.labelLargeBold.copyWith(
+                  color: context.theme.appColors.text,
+                ),
+              ),
+              subtitle: Text(
+                context.localizations.downloads.toLowerCase(),
+                textAlign: TextAlign.center,
+                style: context.theme.appTypography.labelSmall.copyWith(
+                  color: context.theme.appColors.text,
+                ),
               ),
             ),
           ),

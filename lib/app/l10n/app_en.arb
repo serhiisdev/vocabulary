@@ -15,7 +15,9 @@
   "getStarted": "Get started",
   "continueOnboarding": "Continue onboarding",
   "continueLocalized": "Continue",
+  "startOnboarding": "Start onboarding",
   "skip": "Skip",
+  "skipOnboardingStep": "Skip onboarding step",
   "howDidYouHearAboutVocabulary": "How did you hear about Vocabulary?",
   "tailorYourWordRecommendations": "Tailor Your word recommendations",
   "howOldAreYou": "How old are you?",
@@ -46,6 +48,6 @@
   "word": "Word",
   "transcription": "Transcription",
   "definition": "Definition",
-  "example": "Example"
-
+  "example": "Example",
+  "rating": "Rating"
 }

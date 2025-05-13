@@ -102,13 +102,17 @@ class OnboardingQaOptionsScaffold<T extends Localized> extends StatelessWidget {
       );
     }
 
-    final titleWidget = Text(
-      title,
-      textAlign: TextAlign.center,
-      style: context.theme.appTypography.titleLargeBold.copyWith(
-        color: context.theme.appColors.text,
+    final titleWidget = Semantics(
+      header: true,
+      child: Text(
+        title,
+        textAlign: TextAlign.center,
+        style: context.theme.appTypography.titleLargeBold.copyWith(
+          color: context.theme.appColors.text,
+        ),
       ),
     );
+    
     final subtitleWidget = Text(
       subtitle,
       textAlign: TextAlign.center,
