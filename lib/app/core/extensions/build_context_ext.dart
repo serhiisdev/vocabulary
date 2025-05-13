@@ -9,18 +9,17 @@ extension BuildContextExt on BuildContext {
   AppLocalizations get localizations => AppLocalizations.of(this)!;
 
   Size get screenSize => MediaQuery.sizeOf(this);
- 
+
   void showErrorSnackBar() {
     final textStyle = theme.appTypography.bodyMedium.copyWith(
       color: theme.appColors.text,
     );
     final backgroundColor = theme.appColors.background;
+    final message = localizations.somethingWentWrong;
+    
     ScaffoldMessenger.of(this).showSnackBar(
       SnackBar(
-        content: Text(
-          'Something went wrong.',
-          style: textStyle,
-        ),
+        content: Text(message, style: textStyle),
         backgroundColor: backgroundColor,
         behavior: SnackBarBehavior.floating,
         margin: const EdgeInsets.all(16),

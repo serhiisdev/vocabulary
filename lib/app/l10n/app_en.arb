@@ -35,5 +35,17 @@
   "whatGoalDoYouWantToStartWith": "What goal do you want to start with?",
   "definitionLabel": "n.",
   "welcomeToVocabulary": "Welcome to Vocabulary",
-  "swipeUp": "Swipe up"
+  "swipeUp": "Swipe up",
+  "doubleTapToGoToNextWord": "Double tap to go to next word.",
+  "swipeDownToGoToPreviousWord": "Swipe down to go to previous word.",
+  "swipeUpToGoToNextWord": "Swipe up to go to next word.",
+  "doubleTapOrSwipeUpToStartExploringWordsWord": "Double tap or swipe up to start exploring words.",
+  "announceWord": "Announce word",
+  "error": "Error",
+  "somethingWentWrong": "Something went wrong.",
+  "word": "Word",
+  "transcription": "Transcription",
+  "definition": "Definition",
+  "example": "Example"
+
 }
