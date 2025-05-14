@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vocabulary/app/core/extensions/build_context_ext.dart';
 import 'package:vocabulary/app/core/extensions/theme_data_ext.dart';
@@ -36,52 +37,62 @@ class _HomeScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<WordsListBloc>();
-    return Scaffold(
-      backgroundColor: context.theme.appColors.backgroundV2,
-      body: MultiBlocListener(
-        listeners: [
-          BlocListener<WordsListBloc, WordsListState>(
-            listenWhen:
-                (a, b) =>
-                    b.wordsLoadingStatus.isError &&
-                    a.wordsLoadingStatus != b.wordsLoadingStatus,
-            listener: (context, state) {
-              context.showErrorSnackBar();
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+        systemNavigationBarColor: context.theme.appColors.backgroundV2,
+      ),
+      child: Scaffold(
+        backgroundColor: context.theme.appColors.backgroundV2,
+        body: MultiBlocListener(
+          listeners: [
+            BlocListener<WordsListBloc, WordsListState>(
+              listenWhen:
+                  (a, b) =>
+                      b.wordsLoadingStatus.isError &&
+                      a.wordsLoadingStatus != b.wordsLoadingStatus,
+              listener: (context, state) {
+                context.showErrorSnackBar();
+              },
+            ),
+            BlocListener<WordsListBloc, WordsListState>(
+              listenWhen:
+                  (a, b) =>
+                      b.wordAnnouncingStatus.isError &&
+                      a.wordAnnouncingStatus != b.wordAnnouncingStatus,
+              listener: (context, state) {
+                context.showErrorSnackBar();
+              },
+            ),
+          ],
+          child: BlocBuilder<WordsListBloc, WordsListState>(
+            builder: (context, state) {
+              if (state.words.isEmpty) {
+                if (state.wordsLoadingStatus.isInitial ||
+                    state.wordsLoadingStatus.isLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (state.wordsLoadingStatus.isError) {
+                  return Center(
+                    child: ErrorFlutterWidget(
+                      onRetry: () => bloc.add(const WordsListEvent.started()),
+                      message: context.localizations.error,
+                    ),
+                  );
+                }
+              }
+              return WordsListWidget(
+                onWordsWelcomeWidgetShown:
+                    () => _onWordsWelcomeWidgetShown(bloc),
+                onAnnounceWord: (word) => _onAnnounceWord(word, bloc),
+                showWelcomeWidget: !state.isWordsWelcomeWidgetShown,
+                words: state.words,
+              );
             },
           ),
-          BlocListener<WordsListBloc, WordsListState>(
-            listenWhen:
-                (a, b) =>
-                    b.wordAnnouncingStatus.isError &&
-                    a.wordAnnouncingStatus != b.wordAnnouncingStatus,
-            listener: (context, state) {
-              context.showErrorSnackBar();
-            },
-          ),
-        ],
-        child: BlocBuilder<WordsListBloc, WordsListState>(
-          builder: (context, state) {
-            if (state.words.isEmpty) {
-              if (state.wordsLoadingStatus.isInitial ||
-                  state.wordsLoadingStatus.isLoading) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              if (state.wordsLoadingStatus.isError) {
-                return Center(
-                  child: ErrorFlutterWidget(
-                    onRetry: () => bloc.add(const WordsListEvent.started()),
-                    message: context.localizations.error,
-                  ),
-                );
-              }
-            }
-            return WordsListWidget(
-              onWordsWelcomeWidgetShown: () => _onWordsWelcomeWidgetShown(bloc),
-              onAnnounceWord: (word) => _onAnnounceWord(word, bloc),
-              showWelcomeWidget: !state.isWordsWelcomeWidgetShown,
-              words: state.words,
-            );
-          },
         ),
       ),
     );
