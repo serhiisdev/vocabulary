@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:vocabulary/app/core/extensions/build_context_ext.dart';
 import 'package:vocabulary/presentation/core/carousel_slider_widget.dart';
+import 'package:vocabulary/presentation/core/overscroll_listener_widget.dart';
 import 'package:vocabulary/presentation/words_list/data/word_ui_model.dart';
 import 'package:vocabulary/presentation/words_list/widgets/components/word_list_item_widget.dart';
 import 'package:vocabulary/presentation/words_list/widgets/welcome_words_widget.dart';
@@ -132,10 +133,18 @@ class _WordsListViewState extends State<_WordsListView> {
             onTap: () => _controller.nextPage(),
             onScrollUp: () => _controller.nextPage(),
             onScrollDown: () => _controller.previousPage(),
-            child: WordListItemWidget(
-              key: Key(item.id),
-              onAnnounceWord: () => _onAnnounceWord(item),
-              word: item,
+            child: OverscrollListenerWidget(
+              onTopOverscroll: () => _controller.previousPage(),
+              onBottomOverscroll: () => _controller.nextPage(),
+              child: SingleChildScrollView(
+                child: SafeArea(
+                  child: WordListItemWidget(
+                    key: Key(item.id),
+                    onAnnounceWord: () => _onAnnounceWord(item),
+                    word: item,
+                  ),
+                ),
+              ),
             ),
           );
         },
