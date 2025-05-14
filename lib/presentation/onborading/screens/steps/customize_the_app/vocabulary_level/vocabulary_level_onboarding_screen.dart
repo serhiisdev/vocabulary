@@ -10,6 +10,8 @@ import 'package:vocabulary/presentation/onborading/widgets/scaffold/onboarding_q
 class VocabularyLevelOnboardingScreen extends StatelessWidget {
   const VocabularyLevelOnboardingScreen({super.key});
 
+  static const step = OnboardingStepUi.vocabularyLevel;
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<OnboardingBloc>();
@@ -19,11 +21,7 @@ class VocabularyLevelOnboardingScreen extends StatelessWidget {
       },
       onSelected: (item) {
         bloc.add(OnboardingEvent.vocabularyLevelSelected(item));
-        bloc.add(
-          const OnboardingEvent.markStepAsCompleted(
-            OnboardingStepUi.vocabularyLevel,
-          ),
-        );
+        bloc.add(const OnboardingEvent.markStepAsCompleted(step));
       },
       isItemSelected: (item) => bloc.state.vocabularyLevel == item,
       onSelectedAnimationCompleted: () {
@@ -32,6 +30,7 @@ class VocabularyLevelOnboardingScreen extends StatelessWidget {
       onSkip: () {
         bloc.add(OnboardingEvent.skip());
       },
+      isLastOnboardingStep: bloc.state.isLastOnboardingStep(step),
       title: context.localizations.whatsYourVocabularyLevel,
       subtitle: context.localizations.selectAnOptionToContinue,
       items: OnboardingVocabularyLevel.values,

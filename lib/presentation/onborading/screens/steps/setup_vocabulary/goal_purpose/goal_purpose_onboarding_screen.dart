@@ -10,6 +10,8 @@ import 'package:vocabulary/presentation/onborading/widgets/scaffold/onboarding_q
 class GoalPurposeOnboardingScreen extends StatelessWidget {
   const GoalPurposeOnboardingScreen({super.key});
 
+  static const step = OnboardingStepUi.goalPurpose;
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<OnboardingBloc>();
@@ -20,11 +22,7 @@ class GoalPurposeOnboardingScreen extends StatelessWidget {
       },
       onSelected: (item) {
         bloc.add(OnboardingEvent.goalPurposeSelected(item));
-        bloc.add(
-          const OnboardingEvent.markStepAsCompleted(
-            OnboardingStepUi.goalPurpose,
-          ),
-        );
+        bloc.add(const OnboardingEvent.markStepAsCompleted(step));
       },
       isItemSelected: (item) => bloc.state.goalsPurpose.contains(item),
       onContinue: () {
@@ -33,6 +31,7 @@ class GoalPurposeOnboardingScreen extends StatelessWidget {
       onSkip: () {
         bloc.add(OnboardingEvent.skip());
       },
+      isLastOnboardingStep: bloc.state.isLastOnboardingStep(step),
       title: context.localizations.doYouHaveASpecificGoalInMind,
       subtitle: context.localizations.selectAtLeastOptionToContinue,
       subtitle2: '(${context.localizations.multiselect.toLowerCase()})',

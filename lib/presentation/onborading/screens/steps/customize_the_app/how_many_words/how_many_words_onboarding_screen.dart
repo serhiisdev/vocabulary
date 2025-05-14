@@ -10,15 +10,15 @@ import 'package:vocabulary/presentation/onborading/widgets/scaffold/onboarding_q
 class HowManyWordsOnboardingScreen extends StatelessWidget {
   const HowManyWordsOnboardingScreen({super.key});
 
+  static const step = OnboardingStepUi.howManyWords;
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<OnboardingBloc>();
     return OnboardingQaOptionsScaffold(
       onSelected: (item) {
         bloc.add(OnboardingEvent.numOfWordsSelected(item));
-        bloc.add(
-          OnboardingEvent.markStepAsCompleted(OnboardingStepUi.howManyWords),
-        );
+        bloc.add(OnboardingEvent.markStepAsCompleted(step));
       },
       isItemSelected: (item) => bloc.state.numOfWords == item,
       onPop: () {
@@ -30,6 +30,7 @@ class HowManyWordsOnboardingScreen extends StatelessWidget {
       onSkip: () {
         bloc.add(OnboardingEvent.skip());
       },
+      isLastOnboardingStep: bloc.state.isLastOnboardingStep(step),
       title: context.localizations.howManyWordsDoYouWantToLearnPerWeek,
       subtitle: context.localizations.youCanAlwaysChangeYourGoalLater,
       items: OnboardingNumOfWords.values,

@@ -10,6 +10,8 @@ import 'package:vocabulary/presentation/onborading/widgets/scaffold/onboarding_q
 class GenderSelectionOnboardingScreen extends StatelessWidget {
   const GenderSelectionOnboardingScreen({super.key});
 
+  static const step = OnboardingStepUi.genderSelection;
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<OnboardingBloc>();
@@ -19,11 +21,7 @@ class GenderSelectionOnboardingScreen extends StatelessWidget {
       },
       onSelected: (item) {
         bloc.add(OnboardingEvent.genderSelected(item));
-        bloc.add(
-          const OnboardingEvent.markStepAsCompleted(
-            OnboardingStepUi.genderSelection,
-          ),
-        );
+        bloc.add(const OnboardingEvent.markStepAsCompleted(step));
       },
       isItemSelected: (item) => bloc.state.gender == item,
       onSelectedAnimationCompleted: () {
@@ -32,6 +30,7 @@ class GenderSelectionOnboardingScreen extends StatelessWidget {
       onSkip: () {
         bloc.add(OnboardingEvent.skip());
       },
+      isLastOnboardingStep: bloc.state.isLastOnboardingStep(step),
       title: context.localizations.whichOptionRepresentsYouBest,
       subtitle: context.localizations.selectAnOptionToContinue,
       items: OnboardingGender.values,

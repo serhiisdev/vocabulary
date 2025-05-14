@@ -10,6 +10,8 @@ import 'package:vocabulary/presentation/onborading/widgets/scaffold/onboarding_q
 class HowDidYouHearAboutAppOnboardingScreen extends StatelessWidget {
   const HowDidYouHearAboutAppOnboardingScreen({super.key});
 
+  static const step = OnboardingStepUi.howDidYouHearAboutApp;
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<OnboardingBloc>();
@@ -19,11 +21,7 @@ class HowDidYouHearAboutAppOnboardingScreen extends StatelessWidget {
       },
       onSelected: (item) {
         bloc.add(OnboardingEvent.howDidYouHearAboutUsSelected(item));
-        bloc.add(
-          const OnboardingEvent.markStepAsCompleted(
-            OnboardingStepUi.howDidYouHearAboutApp,
-          ),
-        );
+        bloc.add(const OnboardingEvent.markStepAsCompleted(step));
       },
       isItemSelected: (item) => bloc.state.howDidYouHearAboutUs == item,
       onSelectedAnimationCompleted: () {
@@ -32,6 +30,7 @@ class HowDidYouHearAboutAppOnboardingScreen extends StatelessWidget {
       onSkip: () {
         bloc.add(OnboardingEvent.skip());
       },
+      isLastOnboardingStep: bloc.state.isLastOnboardingStep(step),
       title: context.localizations.howDidYouHearAboutVocabulary,
       subtitle: context.localizations.selectAnOptionToContinue,
       items: OnboardingHowDidYouHearAboutUs.values,

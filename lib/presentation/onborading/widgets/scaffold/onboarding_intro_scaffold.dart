@@ -9,12 +9,14 @@ class OnboardingIntroScaffold extends StatelessWidget {
   final VoidCallback onPop;
   final VoidCallback onContinue;
   final VoidCallback onSkip;
+  final bool isLastOnboardingStep;
   final String title;
   const OnboardingIntroScaffold({
     super.key,
     required this.onPop,
     required this.onContinue,
     required this.onSkip,
+    required this.isLastOnboardingStep,
     required this.title,
   });
 
@@ -62,7 +64,13 @@ class OnboardingIntroScaffold extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: OnboardingAppBar.build(context, onPop: _onPop, onSkip: _onSkip),
+      appBar: OnboardingAppBar.build(
+        context,
+        onPop: _onPop,
+        onSkip: _onSkip,
+        skipButtonTitle:
+            isLastOnboardingStep ? context.localizations.complete : null,
+      ),
       floatingActionButton: SafeArea(
         minimum: const EdgeInsets.symmetric(
           horizontal: 16,
@@ -79,10 +87,7 @@ class OnboardingIntroScaffold extends StatelessWidget {
             top: 16,
             bottom: bodyBottomPadding,
           ),
-          child: Semantics(
-            header: true,
-            child: titleWidget,
-          ),
+          child: Semantics(header: true, child: titleWidget),
         ),
       ),
     );
