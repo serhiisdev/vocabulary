@@ -49,5 +49,6 @@
   "transcription": "Transcription",
   "definition": "Definition",
   "example": "Example",
-  "rating": "Rating"
+  "rating": "Rating",
+  "retry": "Retry"
 }

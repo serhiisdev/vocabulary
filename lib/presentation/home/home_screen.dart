@@ -4,6 +4,7 @@ import 'package:vocabulary/app/core/extensions/build_context_ext.dart';
 import 'package:vocabulary/app/core/extensions/theme_data_ext.dart';
 import 'package:vocabulary/app/di/get_it.dart';
 import 'package:vocabulary/core/models/bloc_status/bloc_status.dart';
+import 'package:vocabulary/presentation/core/error_flutter_widget.dart';
 import 'package:vocabulary/presentation/words_list/bloc/words_list_bloc.dart';
 import 'package:vocabulary/presentation/words_list/data/word_ui_model.dart';
 import 'package:vocabulary/presentation/words_list/widgets/words_list_widget.dart';
@@ -66,7 +67,12 @@ class _HomeScreenView extends StatelessWidget {
                 return const Center(child: CircularProgressIndicator());
               }
               if (state.wordsLoadingStatus.isError) {
-                return Center(child: Text(context.localizations.error));
+                return Center(
+                  child: ErrorFlutterWidget(
+                    onRetry: () => bloc.add(const WordsListEvent.started()),
+                    message: context.localizations.error,
+                  ),
+                );
               }
             }
             return WordsListWidget(

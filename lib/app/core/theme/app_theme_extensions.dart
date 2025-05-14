@@ -7,6 +7,7 @@ abstract class AppThemeExtensions {
   static AppColorThemeExtension buildAppColors() => AppColorThemeExtension(
     white: AppColors.white,
     black: AppColors.black,
+    blue: AppColors.blue,
     text: AppColors.text,
     textV2: AppColors.textV2,
     background: AppColors.background,
@@ -15,6 +16,7 @@ abstract class AppThemeExtensions {
     buttonForeground: AppColors.buttonForeground,
     shadowColor: AppColors.black,
     starColor: AppColors.starColor,
+    error: AppColors.error,
   );
   static AppTypographyThemeExtension buildAppTypography() =>
       AppTypographyThemeExtension(

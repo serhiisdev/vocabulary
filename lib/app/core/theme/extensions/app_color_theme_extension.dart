@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
   final Color white;
   final Color black;
+  final Color blue;
   final Color text;
   final Color textV2;
   final Color background;
@@ -12,10 +13,12 @@ class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
   final Color buttonForeground;
   final Color shadowColor;
   final Color starColor;
+  final Color error;
 
   const AppColorThemeExtension({
     required this.white,
     required this.black,
+    required this.blue,
     required this.text,
     required this.textV2,
     required this.background,
@@ -24,12 +27,14 @@ class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
     required this.buttonForeground,
     required this.shadowColor,
     required this.starColor,
+    required this.error,
   });
 
   @override
   ThemeExtension<AppColorThemeExtension> copyWith({
     Color? white,
     Color? black,
+    Color? blue,
     Color? text,
     Color? textV2,
     Color? background,
@@ -38,10 +43,12 @@ class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
     Color? buttonForeground,
     Color? shadowColor,
     Color? starColor,
+    Color? error,
   }) {
     return AppColorThemeExtension(
       white: white ?? this.white,
       black: black ?? this.black,
+      blue: blue ?? this.blue,
       text: text ?? this.text,
       textV2: textV2 ?? this.textV2,
       background: background ?? this.background,
@@ -50,6 +57,7 @@ class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
       buttonForeground: buttonForeground ?? this.buttonForeground,
       shadowColor: shadowColor ?? this.shadowColor,
       starColor: starColor ?? this.starColor,
+      error: error ?? this.error,
     );
   }
 
@@ -62,6 +70,7 @@ class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
     return AppColorThemeExtension(
       white: white.lerp(other.white, t),
       black: black.lerp(other.black, t),
+      blue: blue.lerp(other.blue, t),
       text: text.lerp(other.text, t),
       textV2: textV2.lerp(other.textV2, t),
       background: background.lerp(other.background, t),
@@ -70,6 +79,7 @@ class AppColorThemeExtension extends ThemeExtension<AppColorThemeExtension> {
       buttonForeground: buttonForeground.lerp(other.buttonForeground, t),
       shadowColor: shadowColor.lerp(other.shadowColor, t),
       starColor: starColor.lerp(other.starColor, t),
+      error: error.lerp(other.error, t),
     );
   }
 }
