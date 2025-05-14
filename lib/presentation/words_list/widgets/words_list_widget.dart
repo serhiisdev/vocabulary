@@ -8,11 +8,13 @@ import 'package:vocabulary/presentation/words_list/widgets/components/word_list_
 import 'package:vocabulary/presentation/words_list/widgets/welcome_words_widget.dart';
 
 class WordsListWidget extends StatelessWidget {
+  final VoidCallback onWordsWelcomeWidgetShown;
   final void Function(WordUiModel word) onAnnounceWord;
   final bool showWelcomeWidget;
   final List<WordUiModel> words;
   const WordsListWidget({
     super.key,
+    required this.onWordsWelcomeWidgetShown,
     required this.onAnnounceWord,
     required this.showWelcomeWidget,
     required this.words,
@@ -21,6 +23,7 @@ class WordsListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _WordsListView(
+      onWordsWelcomeWidgetShown: onWordsWelcomeWidgetShown,
       onAnnounceWord: onAnnounceWord,
       showWelcomeWidget: showWelcomeWidget,
       words: words,
@@ -29,10 +32,12 @@ class WordsListWidget extends StatelessWidget {
 }
 
 class _WordsListView extends StatefulWidget {
+  final VoidCallback onWordsWelcomeWidgetShown;
   final void Function(WordUiModel word) onAnnounceWord;
   final bool showWelcomeWidget;
   final List<WordUiModel> words;
   const _WordsListView({
+    required this.onWordsWelcomeWidgetShown,
     required this.onAnnounceWord,
     required this.showWelcomeWidget,
     required this.words,
@@ -49,6 +54,10 @@ class _WordsListViewState extends State<_WordsListView> {
   void initState() {
     super.initState();
     _controller = CarouselSliderController();
+  }
+
+  void _onWordsWelcomeWidgetShown() {
+    widget.onWordsWelcomeWidgetShown();
   }
 
   void _onAnnounceWord(WordUiModel word) {
@@ -107,7 +116,7 @@ class _WordsListViewState extends State<_WordsListView> {
               onScrollUp: () => _controller.nextPage(),
               onScrollDown: () {},
               excludeSemantics: true,
-              child: const WelcomeWordsWidget(),
+              child: WelcomeWordsWidget(onShown: _onWordsWelcomeWidgetShown),
             );
           }
           final itemIndex = widget.showWelcomeWidget ? index - 1 : index;

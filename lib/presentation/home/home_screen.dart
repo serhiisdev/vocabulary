@@ -24,6 +24,10 @@ class HomeScreen extends StatelessWidget {
 class _HomeScreenView extends StatelessWidget {
   const _HomeScreenView();
 
+  void _onWordsWelcomeWidgetShown(WordsListBloc bloc) {
+    bloc.add(const WordsListEvent.onWordsWelcomeWidgetShown());
+  }
+
   void _onAnnounceWord(WordUiModel word, WordsListBloc bloc) {
     bloc.add(WordsListEvent.announceWord(word));
   }
@@ -66,8 +70,9 @@ class _HomeScreenView extends StatelessWidget {
               }
             }
             return WordsListWidget(
+              onWordsWelcomeWidgetShown: () => _onWordsWelcomeWidgetShown(bloc),
               onAnnounceWord: (word) => _onAnnounceWord(word, bloc),
-              showWelcomeWidget: state.isFirstAppLaunch,
+              showWelcomeWidget: !state.isWordsWelcomeWidgetShown,
               words: state.words,
             );
           },

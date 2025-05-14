@@ -6,6 +6,6 @@ sealed class WordsListState with _$WordsListState {
     @Default(BlocStatus.initial()) BlocStatus wordsLoadingStatus,
     @Default(BlocStatus.initial()) BlocStatus wordAnnouncingStatus,
     @Default([]) List<WordUiModel> words,
-    required bool isFirstAppLaunch,
+    required bool isWordsWelcomeWidgetShown,
   }) = _WordsListState;
 }

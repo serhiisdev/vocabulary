@@ -5,14 +5,9 @@ import 'package:vocabulary/core/models/result.dart';
 import 'package:vocabulary/data/repositories/app_preferences/config/app_preferences_keys.dart';
 
 abstract class AppPreferencesRepository {
-  Future<Result<void>> incrementCountOfAppLaunches();
+  Future<Result<void>> setIsWordsWelcomeWidgetShown(bool isShown);
 
-  /// Returns the saved count of app launches. I.e. the count of app launches that was
-  /// incremented by using [incrementCountOfAppLaunches] method.
-  ///
-  /// Note: as this method returns only the saved count of app launches,
-  /// it might not reflect actual app launches count.
-  int getSavedCountOfAppLaunches();
+  bool getIsWordsWelcomeWidgetShown();
 }
 
 @Injectable(as: AppPreferencesRepository)
@@ -22,11 +17,12 @@ class AppPreferencesRepositoryImpl extends AppPreferencesRepository {
   AppPreferencesRepositoryImpl(this._storage, this._logger);
 
   @override
-  Future<Result<void>> incrementCountOfAppLaunches() async {
+  Future<Result<void>> setIsWordsWelcomeWidgetShown(bool isShown) async {
     try {
-      final count = getSavedCountOfAppLaunches();
-      final newCount = count + 1;
-      await _storage.setInt(AppPreferencesKeys.countOfAppLaunches, newCount);
+      await _storage.setBool(
+        AppPreferencesKeys.isWordsWelcomeWidgetShown,
+        isShown,
+      );
       return const Ok(null);
     } catch (error, stackTrace) {
       _logger.e(
@@ -38,7 +34,8 @@ class AppPreferencesRepositoryImpl extends AppPreferencesRepository {
   }
 
   @override
-  int getSavedCountOfAppLaunches() {
-    return _storage.getInt(AppPreferencesKeys.countOfAppLaunches) ?? 0;
+  bool getIsWordsWelcomeWidgetShown() {
+    return _storage.getBool(AppPreferencesKeys.isWordsWelcomeWidgetShown) ??
+        false;
   }
 }

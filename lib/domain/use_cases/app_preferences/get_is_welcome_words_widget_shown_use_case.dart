@@ -3,16 +3,11 @@ import 'package:vocabulary/data/repositories/app_preferences/app_preferences_rep
 
 /// Use case to check whenever this is the first app launch.
 @injectable
-class GetIsFirstAppLaunchUseCase {
+class GetIsWordsWelcomeWidgetShownUseCase {
   final AppPreferencesRepository _appPreferencesRepository;
-  GetIsFirstAppLaunchUseCase(this._appPreferencesRepository);
+  GetIsWordsWelcomeWidgetShownUseCase(this._appPreferencesRepository);
 
   bool call() {
-    final count = _appPreferencesRepository.getSavedCountOfAppLaunches();
-    return _isFirstAppLaunch(count);
-  }
-
-  bool _isFirstAppLaunch(int count) {
-    return count <= 1;
+    return _appPreferencesRepository.getIsWordsWelcomeWidgetShown();
   }
 }

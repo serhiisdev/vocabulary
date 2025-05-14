@@ -7,7 +7,8 @@ import 'package:vocabulary/core/models/bloc_status/bloc_status.dart';
 import 'package:vocabulary/core/models/result.dart';
 import 'package:vocabulary/data/repositories/audio_player/audio_player_repository.dart';
 import 'package:vocabulary/domain/models/word/word_model.dart';
-import 'package:vocabulary/domain/use_cases/app_preferences/get_is_first_app_launch_use_case.dart';
+import 'package:vocabulary/domain/use_cases/app_preferences/get_is_welcome_words_widget_shown_use_case.dart';
+import 'package:vocabulary/domain/use_cases/app_preferences/set_is_welcome_words_widget_shown_use_case.dart';
 import 'package:vocabulary/domain/use_cases/audio/announce_word_use_case.dart';
 import 'package:vocabulary/domain/use_cases/words/get_words_use_case.dart';
 import 'package:vocabulary/presentation/words_list/data/word_ui_model.dart';
@@ -22,6 +23,7 @@ class WordsListBloc extends Bloc<WordsListEvent, WordsListState> {
   final GetWordsUseCase _getWordsUseCase;
   final AnnounceWordUseCase _announceWordUseCase;
   final AudioPlayerRepository _audioPlayerRepository;
+  final SetIsWordsWelcomeWidgetShownUseCase _setIsWordsWelcomeWidgetShownUseCase;
   final WordUiModelMapper _wordUiModelMapper;
   final Logger _log;
   WordsListBloc(
@@ -30,16 +32,22 @@ class WordsListBloc extends Bloc<WordsListEvent, WordsListState> {
     this._audioPlayerRepository,
     // This use case is only used to provide the initial value for the state.
     // It is called once in the super constructor to initialize the state and is not used afterward.
-    GetIsFirstAppLaunchUseCase getIsFirstAppLaunchUseCase,
+    GetIsWordsWelcomeWidgetShownUseCase getIsWordsWelcomeWidgetShownUseCase,
+    this._setIsWordsWelcomeWidgetShownUseCase,
     this._wordUiModelMapper,
     this._log,
-  ) : super(WordsListState(isFirstAppLaunch: getIsFirstAppLaunchUseCase())) {
+  ) : super(WordsListState(
+          isWordsWelcomeWidgetShown:
+              getIsWordsWelcomeWidgetShownUseCase(),
+        )) {
     on<_Started>(_onStarted, transformer: droppable());
     on<_AnnounceWord>(_onAnnounceWord, transformer: restartable());
     on<_SubscribeToAudioPlayerErrors>(
       _onSubscribeToAudioPlayerErrors,
       transformer: restartable(),
     );
+    on<_OnWordsWelcomeWidgetShown>(_onOnWordsWelcomeWidgetShown,
+        transformer: droppable());
   }
 
   Future<void> _onStarted(_Started event, Emitter<WordsListState> emit) async {
@@ -92,6 +100,13 @@ class WordsListBloc extends Bloc<WordsListEvent, WordsListState> {
       emit(state.copyWith(wordAnnouncingStatus: BlocStatus.error(error)));
       _log.e(runtimeType.toString(), error: error, stackTrace: stackTrace);
     }
+  }
+
+  Future<void> _onOnWordsWelcomeWidgetShown(
+    _OnWordsWelcomeWidgetShown event,
+    Emitter<WordsListState> emit,
+  ) async {
+    await _setIsWordsWelcomeWidgetShownUseCase(true);
   }
 
   Future<void> _onSubscribeToAudioPlayerErrors(
