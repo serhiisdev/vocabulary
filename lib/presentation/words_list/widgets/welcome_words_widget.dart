@@ -4,7 +4,8 @@ import 'package:vocabulary/app/core/extensions/theme_data_ext.dart';
 import 'package:vocabulary/presentation/core/arrow_up_widget.dart';
 
 class WelcomeWordsWidget extends StatefulWidget {
-  const WelcomeWordsWidget({super.key});
+  final VoidCallback onShown;
+  const WelcomeWordsWidget({super.key, required this.onShown});
 
   @override
   State<WelcomeWordsWidget> createState() => _WelcomeWordsWidgetState();
@@ -80,6 +81,11 @@ class _WelcomeWordsWidgetState extends State<WelcomeWordsWidget>
     ]).animate(_arrowBounceController);
 
     _startAnimations();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      widget.onShown();
+    });
   }
 
   Future<void> _startAnimations() async {

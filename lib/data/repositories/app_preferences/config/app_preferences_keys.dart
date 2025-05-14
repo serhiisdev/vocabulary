@@ -1,5 +1,5 @@
 abstract class AppPreferencesKeys {
   static const String _prefix = 'app_prefs';
-  static const String countOfAppLaunches =
-      '${_prefix}_count_of_app_launches';
+  static const String isWordsWelcomeWidgetShown =
+      '${_prefix}_is_words_welcome_widget_shown';
 }
