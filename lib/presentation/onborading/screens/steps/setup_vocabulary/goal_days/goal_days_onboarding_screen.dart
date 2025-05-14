@@ -10,6 +10,8 @@ import 'package:vocabulary/presentation/onborading/widgets/scaffold/onboarding_q
 class GoalDaysOnboardingScreen extends StatelessWidget {
   const GoalDaysOnboardingScreen({super.key});
 
+  static const step = OnboardingStepUi.goalDays;
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<OnboardingBloc>();
@@ -19,9 +21,7 @@ class GoalDaysOnboardingScreen extends StatelessWidget {
       },
       onSelected: (item) {
         bloc.add(OnboardingEvent.goalDaysSelected(item));
-        bloc.add(
-          const OnboardingEvent.markStepAsCompleted(OnboardingStepUi.goalDays),
-        );
+        bloc.add(const OnboardingEvent.markStepAsCompleted(step));
       },
       isItemSelected: (item) => bloc.state.goalDays == item,
       onSelectedAnimationCompleted: () {
@@ -30,6 +30,7 @@ class GoalDaysOnboardingScreen extends StatelessWidget {
       onSkip: () {
         bloc.add(OnboardingEvent.skip());
       },
+      isLastOnboardingStep: bloc.state.isLastOnboardingStep(step),
       title: context.localizations.whatGoalDoYouWantToStartWith,
       subtitle:
           context.localizations.beingConsistentIsKeyToExpandingYourVocabulary,

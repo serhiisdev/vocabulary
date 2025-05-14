@@ -9,6 +9,8 @@ import 'package:vocabulary/presentation/onborading/widgets/scaffold/onboarding_i
 class SetupVocabularyIntroOnboardingScreen extends StatelessWidget {
   const SetupVocabularyIntroOnboardingScreen({super.key});
 
+  static const step = OnboardingStepUi.setupVocabularyIntro;
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<OnboardingBloc>();
@@ -17,16 +19,13 @@ class SetupVocabularyIntroOnboardingScreen extends StatelessWidget {
         OnboardingPopScreenHandler.onPop(context, bloc);
       },
       onContinue: () {
-        bloc.add(
-          const OnboardingEvent.markStepAsCompleted(
-            OnboardingStepUi.setupVocabularyIntro,
-          ),
-        );
+        bloc.add(const OnboardingEvent.markStepAsCompleted(step));
         bloc.add(const OnboardingEvent.goToNextStep());
       },
       onSkip: () {
         bloc.add(const OnboardingEvent.skip());
       },
+      isLastOnboardingStep: bloc.state.isLastOnboardingStep(step),
       title: context.localizations.setUpVocabularyToHelpYouAchieveYourGoals,
     );
   }

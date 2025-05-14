@@ -10,6 +10,8 @@ import 'package:vocabulary/presentation/onborading/widgets/scaffold/onboarding_q
 class HowOldAreYouOnboardingScreen extends StatelessWidget {
   const HowOldAreYouOnboardingScreen({super.key});
 
+  static const step = OnboardingStepUi.howOldAreYou;
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<OnboardingBloc>();
@@ -19,11 +21,7 @@ class HowOldAreYouOnboardingScreen extends StatelessWidget {
       },
       onSelected: (item) {
         bloc.add(OnboardingEvent.howOldAreYouSelected(item));
-        bloc.add(
-          const OnboardingEvent.markStepAsCompleted(
-            OnboardingStepUi.howOldAreYou,
-          ),
-        );
+        bloc.add(const OnboardingEvent.markStepAsCompleted(step));
       },
       isItemSelected: (item) => bloc.state.howOldAreYou == item,
       onSelectedAnimationCompleted: () {
@@ -32,6 +30,7 @@ class HowOldAreYouOnboardingScreen extends StatelessWidget {
       onSkip: () {
         bloc.add(OnboardingEvent.skip());
       },
+      isLastOnboardingStep: bloc.state.isLastOnboardingStep(step),
       title: context.localizations.howOldAreYou,
       subtitle: context.localizations.yourAgeIsUsedToPersonalizeYourContent,
       items: OnboardingHowOldAreYou.values,

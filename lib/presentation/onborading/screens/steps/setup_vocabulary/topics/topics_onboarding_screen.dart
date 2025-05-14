@@ -10,6 +10,8 @@ import 'package:vocabulary/presentation/onborading/widgets/scaffold/onboarding_q
 class TopicsOnboardingScreen extends StatelessWidget {
   const TopicsOnboardingScreen({super.key});
 
+  static const step = OnboardingStepUi.topics;
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<OnboardingBloc>();
@@ -19,9 +21,7 @@ class TopicsOnboardingScreen extends StatelessWidget {
       },
       onSelected: (item) {
         bloc.add(OnboardingEvent.topicsSelected(item));
-        bloc.add(
-          const OnboardingEvent.markStepAsCompleted(OnboardingStepUi.topics),
-        );
+        bloc.add(const OnboardingEvent.markStepAsCompleted(step));
       },
       isItemSelected: (item) => bloc.state.topics.contains(item),
       onContinue: () {
@@ -30,6 +30,7 @@ class TopicsOnboardingScreen extends StatelessWidget {
       onSkip: () {
         bloc.add(OnboardingEvent.skip());
       },
+      isLastOnboardingStep: bloc.state.isLastOnboardingStep(step),
       title: context.localizations.whichTopicsAreYouInterestedIn,
       subtitle: context.localizations.selectAtLeastOptionToContinue,
       subtitle2: '(${context.localizations.multiselect.toLowerCase()})',

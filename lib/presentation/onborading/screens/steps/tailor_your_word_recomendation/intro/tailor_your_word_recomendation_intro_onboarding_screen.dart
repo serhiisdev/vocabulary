@@ -9,6 +9,8 @@ import 'package:vocabulary/presentation/onborading/widgets/scaffold/onboarding_i
 class TailorYourWordRecomendationIntroOnboardingScreen extends StatelessWidget {
   const TailorYourWordRecomendationIntroOnboardingScreen({super.key});
 
+  static const step = OnboardingStepUi.tailorYourWordRecomendationIntro;
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<OnboardingBloc>();
@@ -17,16 +19,13 @@ class TailorYourWordRecomendationIntroOnboardingScreen extends StatelessWidget {
         OnboardingPopScreenHandler.onPop(context, bloc);
       },
       onContinue: () {
-        bloc.add(
-          const OnboardingEvent.markStepAsCompleted(
-            OnboardingStepUi.tailorYourWordRecomendationIntro,
-          ),
-        );
+        bloc.add(const OnboardingEvent.markStepAsCompleted(step));
         bloc.add(const OnboardingEvent.goToNextStep());
       },
       onSkip: () {
         bloc.add(const OnboardingEvent.skip());
       },
+      isLastOnboardingStep: bloc.state.isLastOnboardingStep(step),
       title: context.localizations.tailorYourWordRecommendations,
     );
   }

@@ -9,6 +9,8 @@ abstract class OnboardingAppBar {
     BuildContext context, {
     required VoidCallback onPop,
     required VoidCallback onSkip,
+    /// If provided, this text will replace default skip button title.
+    String? skipButtonTitle,
   }) {
     final isIos = Theme.of(context).platform == TargetPlatform.iOS;
     final skipButtonTextStyle = context.theme.appTypography.titleMedium
@@ -35,6 +37,7 @@ abstract class OnboardingAppBar {
           ),
           SkipButtonWidget(
             onSkip: onSkip,
+            title: skipButtonTitle,
             textStyle: skipButtonTextStyle,
           ),
         ],

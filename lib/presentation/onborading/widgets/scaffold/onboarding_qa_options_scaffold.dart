@@ -19,6 +19,8 @@ class OnboardingQaOptionsScaffold<T extends Localized> extends StatelessWidget {
   /// If not provided, the scaffold will not show a floating action button.
   final VoidCallback? onContinue;
 
+  final bool isLastOnboardingStep;
+
   /// Delay before [onSelectedAnimationCompleted] will be invoked.
   /// If set, after animnation will be completed, this widget will wait
   /// additional [delayBeforeCompletedCallbackInvokation] before invoking
@@ -36,6 +38,7 @@ class OnboardingQaOptionsScaffold<T extends Localized> extends StatelessWidget {
     this.onSelectedAnimationCompleted,
     required this.onSkip,
     this.onContinue,
+    required this.isLastOnboardingStep,
     this.delayBeforeCompletedCallbackInvokation = const Duration(
       milliseconds: 150,
     ),
@@ -112,7 +115,7 @@ class OnboardingQaOptionsScaffold<T extends Localized> extends StatelessWidget {
         ),
       ),
     );
-    
+
     final subtitleWidget = Text(
       subtitle,
       textAlign: TextAlign.center,
@@ -166,7 +169,14 @@ class OnboardingQaOptionsScaffold<T extends Localized> extends StatelessWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: OnboardingAppBar.build(context, onPop: _onPop, onSkip: _onSkip),
+      appBar: OnboardingAppBar.build(
+        context,
+        onPop: _onPop,
+        onSkip: _onSkip,
+        skipButtonTitle: isLastOnboardingStep
+            ? context.localizations.complete
+            : null,
+      ),
       floatingActionButton:
           floatingActionButtonWidget != null
               ? SafeArea(

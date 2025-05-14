@@ -3,10 +3,12 @@ import 'package:vocabulary/app/core/extensions/build_context_ext.dart';
 
 class SkipButtonWidget extends StatelessWidget {
   final VoidCallback onSkip;
+  final String? title;
   final TextStyle textStyle;
   const SkipButtonWidget({
     super.key,
     required this.onSkip,
+    this.title,
     required this.textStyle,
   });
 
@@ -15,7 +17,7 @@ class SkipButtonWidget extends StatelessWidget {
     return TextButton(
       onPressed: onSkip,
       child: Text(
-        context.localizations.skip,
+        title ?? context.localizations.skip,
         style: textStyle,
       ),
     );

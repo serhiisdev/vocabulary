@@ -50,5 +50,6 @@
   "definition": "Definition",
   "example": "Example",
   "rating": "Rating",
-  "retry": "Retry"
+  "retry": "Retry",
+  "complete": "Complete"
 }

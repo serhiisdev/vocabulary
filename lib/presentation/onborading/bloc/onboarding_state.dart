@@ -32,7 +32,12 @@ extension OnboardingStateX on OnboardingState {
   bool get isCompleted => completedSteps.length == steps.length;
   bool get isOnboardingPartiallyCompleted =>
       completedSteps.isNotEmpty && !isCompleted;
-      
+
+  bool isLastOnboardingStep(OnboardingStepUi step) {
+    assert(steps.isNotEmpty, 'steps must be non-empty');
+    return steps.last == step;
+  }
+
   int get nextStepIndex {
     return math.min(steps.length - 1, currentStepIndex + 1);
   }
