@@ -65,6 +65,20 @@ class _WordsListViewState extends State<_WordsListView> {
     widget.onAnnounceWord(word);
   }
 
+  void _maybeAnnounceWordWithScreenReader(BuildContext context,WordUiModel word) {
+    final isIos = Theme.of(context).platform == TargetPlatform.iOS;
+    /// Due to behavioral differences between iOS VoiceOver and Android TalkBack,
+    /// we need to use [SemanticsService] to announce words only on iOS.
+    /// This ensures that, after scrolling to the next word, VoiceOver immediately announces the current word.
+    /// Without this, VoiceOver may announce the previous word for a second or two before switching.
+    /// On Android, TalkBack works as expected without using [SemanticsService].
+    if(!isIos) return;
+    SemanticsService.announce(
+      _getSemanticsAnnounceString(word),
+      TextDirection.ltr,
+    );
+  }
+
   String _getWelcomeScreenSemanticsValue(BuildContext context) {
     return '${context.localizations.welcomeToVocabulary}. ${context.localizations.doubleTapOrSwipeUpToStartExploringWordsWord}.';
   }
@@ -102,10 +116,7 @@ class _WordsListViewState extends State<_WordsListView> {
           }
           final itemIndex = widget.showWelcomeWidget ? index - 1 : index;
           final item = widget.words[itemIndex];
-          SemanticsService.announce(
-            _getSemanticsAnnounceString(item),
-            TextDirection.ltr,
-          );
+          _maybeAnnounceWordWithScreenReader(context, item);
         },
         itemCount: itemsCount,
         itemBuilder: (context, index, ___) {
